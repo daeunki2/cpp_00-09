@@ -1,0 +1,23 @@
+# 컴파일된 바이너리 및 오브젝트 파일
+a.out
+*.o
+*.out
+*.exe
+
+# MacOS 시스템 파일
+.DS_Store
+
+# 백업 파일
+*~
+*.swp
+*.tmp
+
+# 실행 파일 (예: 프로그램 이름이 'megaphone'이면)
+megaphone
+
+# 빌드 폴더가 있다면
+build/
+
+# CLion이나 VSCode 등 IDE 관련
+.vscode/
+.idea/
