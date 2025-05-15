@@ -12,11 +12,8 @@ a.out
 *.swp
 *.tmp
 
-# 실행 파일 (예: 프로그램 이름이 'megaphone'이면)
+# 실행 파일
 megaphone
-
-# 빌드 폴더가 있다면
-build/
 
 # CLion이나 VSCode 등 IDE 관련
 .vscode/
