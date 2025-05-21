@@ -18,3 +18,6 @@ megaphone
 # CLion이나 VSCode 등 IDE 관련
 .vscode/
 .idea/
+
+# JSON 파일
+*.json
