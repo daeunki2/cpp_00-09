@@ -6,7 +6,7 @@
 #    By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/15 09:40:09 by daeunki2          #+#    #+#              #
-#    Updated: 2025/05/15 10:29:52 by daeunki2         ###   ########.fr        #
+#    Updated: 2025/05/22 11:50:09 by daeunki2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,35 +33,33 @@ BOLD_WHITE = \033[1;37m
 # Reset color
 RESET = \033[0m
 
+
+
 NAME = megaphone
-CC = c++ 
+CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRC_DIR = srcs
-OBJ_DIR = objs
-
-SRCS = $(SRC_DIR)/megaphone.cpp
-OBJS = $(SRCS:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
+SRCS = megaphone.cpp
+OBJS = megaphone.o
 
 all: $(NAME)
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
-	@mkdir -p $(dir $@)
-	@$(CC) $(CFLAGS) -c $< -o $@ 
-
 $(NAME): $(OBJS)
 	@echo "Building $(NAME) 🛠️"
-	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
-	@echo "Build Complete! ✅"  
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+	@echo "Build Complete! ✅"
+
+%.o: %.cpp
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	@echo "Cleaning obj_fils 🧹"
-	@rm -rf $(OBJ_DIR)
+	@echo "Cleaning object files 🧹"
+	rm -f $(OBJS)
 	@echo "cleaning ✅"
 
 fclean: clean
-	@echo "Cleaning Executables 🧹"
-	@rm -f $(NAME)
+	@echo "Cleaning Executable 🧹"
+	rm -f $(NAME)
 	@echo "fclean ✅"
 
 re: fclean all
