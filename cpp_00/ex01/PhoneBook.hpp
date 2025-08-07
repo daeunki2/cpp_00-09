@@ -6,7 +6,7 @@
 /*   By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 15:14:49 by daeunki2          #+#    #+#             */
-/*   Updated: 2025/07/12 00:18:49 by daeunki2         ###   ########.fr       */
+/*   Updated: 2025/07/15 14:00:03 by daeunki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,15 @@
 #include <string> // string
 #include <cctype> // isalpha
 
+
+enum Status {
+    F_NAME = 0,
+    L_NAME = 1,
+    N_NAME = 2,
+    P_NUM = 3,
+    D_SECREAT = 4,
+	FIELD_COUNT,
+};
 
 /// the functions for checking the users input and triming the inputs
 std::string safe_str(const std::string &input);
@@ -39,34 +48,10 @@ class Contact
     public :
 	Contact();
 
-	bool	set_first_name(const std::string &str);
-	bool	set_last_name(const std::string &str);
-	bool	set_nick_name(const std::string &str);
-	bool	set_phone_number(const std::string &str);
-	bool	set_darkest_secret(const std::string &str);
-	
-	std::string get_first_name() const { return first_name; }
-    std::string get_last_name() const { return last_name; }
-    std::string get_nick_name() const { return nick_name; }
-    std::string get_phone_number() const { return phone_number; }
-    std::string get_darkest_secret() const { return darkest_secret; }
-	
+	bool set_contacts(const std::string &user_input, Status flag);
 	void write_page();
-	void print_contact(int index) const
-	{
-		std::string index_str = coupcoup(std::to_string(index));
-		if (index == 0)
-		{
-			std::cout << "______________________________________________" << std::endl;	
-    		std::cout << "|Index     |First Name|Last Name |Nick Name |" << std::endl;
-    		std::cout << "______________________________________________" << std::endl;	
-		}
-		std::cout << "|" << index_str << "|";
-		std::cout << first_name << "|";
-		std::cout << last_name << "|";
-		std::cout << nick_name << "|"<<std::endl;;
-		std::cout << "______________________________________________" << std::endl;	
-	}
+	void print_a_detail_page();
+	void print_one_line(int index) const;
 };
 
 //class for a book
@@ -80,9 +65,9 @@ class PhoneBook
 	public : 
 	PhoneBook();
 
-    void add_1_page();
-	void print_contact_at(int index);
-
+    void add();
+	void search();
+	void show_all_contacts();
 };
 
 #endif

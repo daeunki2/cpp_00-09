@@ -6,7 +6,7 @@
 /*   By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 15:14:41 by daeunki2          #+#    #+#             */
-/*   Updated: 2025/07/11 22:54:21 by daeunki2         ###   ########.fr       */
+/*   Updated: 2025/07/12 01:25:32 by daeunki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,20 @@ int main()
         std::getline(std::cin, input);
         if (input == "ADD")
         {
-            phone_book.add_1_page();
-            phone_book.print_contact_at(0);
+            phone_book.add();
         }
-        // else if (input == "SEARCH")
-        // {
-            
-        // }
-        // else if (input == "EXIT")
-        // {
-            
-        // }
+        else if (input == "SEARCH")
+        {
+            phone_book.search();
+        }
+        else if (input == "SEARCH")
+        {
+            phone_book.search();
+        }
+        else if (input == "EXIT")
+        {
+            break ;
+        }
         else
         {
             std::cout << "Please, use correct command." << std::endl;

@@ -6,7 +6,7 @@
 /*   By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 15:14:56 by daeunki2          #+#    #+#             */
-/*   Updated: 2025/07/12 00:14:31 by daeunki2         ###   ########.fr       */
+/*   Updated: 2025/07/12 00:23:01 by daeunki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ std::string coupcoup(const std::string &temp)
     }
     else
     {
-        final = temp + std::string(10-temp.length(),' ');
+        final = std::string(10-temp.length(),' ') + temp;
     }
     return final;
 }

@@ -6,7 +6,7 @@
 #    By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/15 09:40:09 by daeunki2          #+#    #+#              #
-#    Updated: 2025/07/11 17:58:22 by daeunki2         ###   ########.fr        #
+#    Updated: 2025/08/05 10:56:20 by daeunki2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,12 +35,12 @@ RESET = \033[0m
 
 
 
-NAME = megaphone
+NAME = Account
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRCS = megaphone.cpp
-OBJS = megaphone.o
+SRCS = Account.cpp
+OBJS = Account.o
 
 all: $(NAME)
 

@@ -6,7 +6,7 @@
 #    By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/15 09:40:09 by daeunki2          #+#    #+#              #
-#    Updated: 2025/07/11 17:58:22 by daeunki2         ###   ########.fr        #
+#    Updated: 2025/08/07 15:54:18 by daeunki2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,31 +35,31 @@ RESET = \033[0m
 
 
 
-NAME = megaphone
+NAME = Zombie
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRCS = megaphone.cpp
-OBJS = megaphone.o
+SRCS = Zombie.cpp main.cpp
+OBJS = Zombie.o main.o
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
 	@echo "Building $(NAME) 🛠️"
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 	@echo "Build Complete! ✅"
 
 %.o: %.cpp
-	$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	@echo "Cleaning object files 🧹"
-	rm -f $(OBJS)
+	@rm -f $(OBJS)
 	@echo "cleaning ✅"
 
 fclean: clean
 	@echo "Cleaning Executable 🧹"
-	rm -f $(NAME)
+	@rm -f $(NAME)
 	@echo "fclean ✅"
 
 re: fclean all
