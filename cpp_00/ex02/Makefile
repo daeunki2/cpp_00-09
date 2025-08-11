@@ -6,7 +6,7 @@
 #    By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/15 09:40:09 by daeunki2          #+#    #+#              #
-#    Updated: 2025/08/05 10:56:20 by daeunki2         ###   ########.fr        #
+#    Updated: 2025/08/10 23:36:23 by daeunki2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,35 +33,50 @@ BOLD_WHITE = \033[1;37m
 # Reset color
 RESET = \033[0m
 
-
+#for correction
+TEST_LOG = my.log
+REFERENCE_LOG = 19920104_091532.log
 
 NAME = Account
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRCS = Account.cpp
-OBJS = Account.o
+OBJ_DIR = obj
+
+SRCS = Account.cpp \
+       tests.cpp \
+
+OBJS = $(SRCS:%.cpp=$(OBJ_DIR)/%.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
+$(OBJ_DIR):
+	@mkdir -p $(OBJ_DIR)
+
+$(NAME): $(OBJ_DIR) $(OBJS)
 	@echo "Building $(NAME) 🛠️"
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 	@echo "Build Complete! ✅"
 
-%.o: %.cpp
-	$(CC) $(CFLAGS) -c $< -o $@
+$(OBJ_DIR)/%.o: %.cpp | $(OBJ_DIR)
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	@echo "Cleaning object files 🧹"
-	rm -f $(OBJS)
+	@rm -rf $(OBJ_DIR)
 	@echo "cleaning ✅"
 
 fclean: clean
 	@echo "Cleaning Executable 🧹"
-	rm -f $(NAME)
+	@rm -f $(NAME)
+	@rm -rf $(TEST_LOG)
 	@echo "fclean ✅"
 
 re: fclean all
 
+test: $(NAME)
+	./$(NAME) > $(TEST_LOG)
+	diff $(TEST_LOG) $(REFERENCE_LOG)
+
 .PHONY: all clean fclean re
+

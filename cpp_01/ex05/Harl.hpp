@@ -1,23 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Harl.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/07 16:13:38 by daeunki2          #+#    #+#             */
-/*   Updated: 2025/08/11 21:41:50 by daeunki2         ###   ########.fr       */
+/*   Created: 2025/08/11 18:35:37 by daeunki2          #+#    #+#             */
+/*   Updated: 2025/08/11 20:53:41 by daeunki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Harl.hpp"
+#ifndef HARL_HPP
+#define HARL_HPP
 
-int main(int ac, char **av)
+#include <iostream> // cout, cin
+#include <string> // string
+
+class Harl
 {
-  Harl harl;
-	if (ac == 2)
-		harl.complain(av[1]);
-	else
-		harl.complain("irrelevant string");
-	return (EXIT_SUCCESS);
-}
+	private:
+	
+	void debug( void );
+	void info( void );
+	void warning( void );
+	void error( void );
+	
+	public:
+	Harl();
+	~Harl();
+	void    complain( std::string level );
+
+
+};
+
+#endif

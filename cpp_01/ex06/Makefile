@@ -6,7 +6,7 @@
 #    By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/15 09:40:09 by daeunki2          #+#    #+#              #
-#    Updated: 2025/08/07 18:12:35 by daeunki2         ###   ########.fr        #
+#    Updated: 2025/08/11 21:06:08 by daeunki2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,16 +33,14 @@ BOLD_WHITE = \033[1;37m
 # Reset color
 RESET = \033[0m
 
-NAME = Weapon
+NAME = harlFilter
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 OBJ_DIR = obj
 
-SRCS = HumanA.cpp \
-       HumanB.cpp \
+SRCS = Harl.cpp \
        main.cpp \
-       Weapon.cpp
 
 OBJS = $(SRCS:%.cpp=$(OBJ_DIR)/%.o)
 
