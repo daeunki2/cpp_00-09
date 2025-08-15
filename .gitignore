@@ -4,6 +4,9 @@ a.out
 *.out
 *.exe
 
+#과제 파일
+*.pdf
+
 # MacOS 시스템 파일
 .DS_Store
 
