@@ -6,7 +6,7 @@
 #    By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/15 09:40:09 by daeunki2          #+#    #+#              #
-#    Updated: 2025/08/13 17:02:41 by daeunki2         ###   ########.fr        #
+#    Updated: 2025/08/15 04:08:02 by daeunki2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,8 @@ BOLD_WHITE = \033[1;37m
 # Reset color
 RESET = \033[0m
 
+
+
 NAME = program
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
@@ -40,7 +42,9 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98
 OBJ_DIR = obj
 
 SRCS = main.cpp \
-
+		Fixed.cpp \
+		Point.cpp \
+		bsp.cpp
 
 OBJS = $(SRCS:%.cpp=$(OBJ_DIR)/%.o)
 
@@ -65,7 +69,6 @@ clean:
 fclean: clean
 	@echo "Cleaning Executable 🧹"
 	@rm -f $(NAME)
-	@rm -f *.replace
 	@echo "fclean ✅"
 
 re: fclean all

@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   megaphone.cpp                                      :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/15 10:03:19 by daeunki2          #+#    #+#             */
-/*   Updated: 2025/08/14 14:13:36 by daeunki2         ###   ########.fr       */
+/*   Created: 2025/07/18 19:25:20 by daeunki2          #+#    #+#             */
+/*   Updated: 2025/08/15 00:13:06 by daeunki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <cctype>
+#include "Fixed.hpp"
 
-int main(int argc, char **argv)
-{
-	if (argc > 1)
-	{
-		for (int i = 1; i < argc; i++)
-		{
-			for (int j = 0; argv[i][j] != '\0'; j++)
-				argv[i][j] = (char)toupper(argv[i][j]);
-			std::cout << argv[i];
-			if (argv[i] != NULL)
-				std::cout << " ";
-		}
-		std::cout << std::endl;
-	}
-	else
-		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
-	return (0);
+#include <iostream>
+int
+main( void )
+{ 
+	Fixed a;
+	Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
+
+	std::cout << a << std::endl;
+	std::cout << ++a << std::endl;
+	std::cout << a << std::endl;
+	std::cout << a++ << std::endl;
+	std::cout << a << std::endl;
+	std::cout << b << std::endl;
+	std::cout << Fixed::max( a, b ) << std::endl;
+
+	return 0;
 }
