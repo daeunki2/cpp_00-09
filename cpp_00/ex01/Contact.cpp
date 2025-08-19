@@ -1,27 +1,75 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   contact.cpp                                        :+:      :+:    :+:   */
+/*   Contact.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 16:45:23 by daeunki2          #+#    #+#             */
-/*   Updated: 2025/07/15 14:00:28 by daeunki2         ###   ########.fr       */
+/*   Updated: 2025/08/19 19:27:54 by daeunki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
+#include "Contact.hpp"
 
 
 Contact::Contact()
 {
-		first_name = "";
-        last_name = "";
-        nick_name = "";
-        phone_number = "";
-        darkest_secret = "";
+
+}
+Contact::~Contact()
+{
+	
+}
+//setters
+void	Contact::set_first_name(const std::string& valid_input)
+{
+	first_name = valid_input;
+}
+void	Contact::set_last_name(const std::string& valid_input)
+{
+	last_name = valid_input;
+}
+void	Contact::set_nick_name(const std::string& valid_input)
+{
+	nick_name = valid_input;	
+}
+void	Contact::set_phone_number(const std::string& valid_input)
+{
+	phone_number = valid_input;	
+}
+void	Contact::set_darkest_secret(const std::string& valid_input)
+{
+	darkest_secret = valid_input;	
+}
+//getter
+std::string	Contact::get_first_name() const
+{
+	return(first_name);
 }
 
+std::string	Contact::get_last_name() const
+{
+	return(last_name);
+
+}
+
+std::string	Contact::get_nick_name() const
+{
+	return(nick_name);
+
+}
+std::string	Contact::get_phone_number() const
+{
+	return(phone_number);
+
+}
+std::string	Contact::get_darkest_secret() const
+{
+	return(darkest_secret);
+}
+//utille
 bool Contact::set_contacts(const std::string &user_input, Status flag)
 {
 	
@@ -31,30 +79,29 @@ bool Contact::set_contacts(const std::string &user_input, Status flag)
 		temp = safe_number(user_input);
 	else
 		temp = safe_str(user_input);
-	
 	if(temp.empty())
 	{
 		std::cout << "please enter again." << std::endl;
 		return false;
 	}
 
-	temp = coupcoup(temp);
-	    switch (flag)
+
+	switch (flag)
     {
         case F_NAME:
-            first_name = temp;
+            set_first_name(temp);
             break;
         case L_NAME:
-            last_name = temp;
+            set_last_name(temp);
             break;
         case N_NAME:
-            nick_name = temp;
+            set_nick_name(temp);
             break;
         case P_NUM:
-            phone_number = temp;
+            set_phone_number(temp);
             break;
         case D_SECREAT:
-            darkest_secret = temp;
+            set_darkest_secret(temp);
             break;
         default:
             return false;
@@ -63,7 +110,7 @@ bool Contact::set_contacts(const std::string &user_input, Status flag)
 		
 }
 
-void Contact::write_page()
+void Contact::add_page()
 {
 	const std::string prompts[] = 
 	{
@@ -86,25 +133,74 @@ void Contact::write_page()
 	        if (set_contacts(user_input, flag))
                 break;
 		}
-		
 	}
 }
 
-void Contact::print_a_detail_page()
+std::string safe_str(const std::string &input)
 {
-	std::cout << "First Name     : " << first_name << std::endl;
-	std::cout << "Last Name      : " << last_name << std::endl;
-	std::cout << "NickName       : " << nick_name << std::endl;
-	std::cout << "Phone          : " << phone_number <<std::endl;
-	std::cout << "Darkest Secret : " << darkest_secret << std::endl;
+    std::string ready;
+    
+    if (input.empty())
+    {
+        std::cout << "i need at least 1 alphabet" <<  std::endl;
+        return "";
+    }
+    if (!is_alpha_string(input))
+        return "";
+    ready = no_space(input);
+    return ready;
+};
+std::string safe_number(const std::string &input)
+{
+    std::string ready;
+    
+    if (input.empty())
+    {
+        std::cout << "i need at least 1 number" <<  std::endl;
+        return "";
+    }
+    if (!is_number_string(input))
+        return "";
+    ready = no_space(input);
+    return ready;
 }
 
-void Contact::print_one_line(int index) const
+bool is_alpha_string(const std::string &str)
 {
-	std::string index_str = coupcoup(std::to_string(index));
-	std::cout << "|" << index_str
-			  << "|" << first_name
-			  << "|" << last_name
-		  	  << "|" << nick_name
-				<< "|" << std::endl;
+    for (std::string::const_iterator it = str.begin(); it != str.end(); ++it)
+    {
+        char c = *it;
+        if (!std::isalpha(static_cast<unsigned char>(c)) && c != ' ')
+        {
+            std::cout << "[" << c << "]" << " is not an alphabet" << std::endl;
+            return false;
+        }
+    }
+    return true;
 }
+
+bool is_number_string(const std::string &str)
+{
+    for (std::string::const_iterator it = str.begin(); it != str.end(); ++it)
+    {
+        char c = *it;
+        if (!std::isdigit(static_cast<unsigned char>(c)) && c != ' ')
+        {
+            std::cout << "[" << c << "]" << " is not a digit" << std::endl;
+            return false;
+        }
+    }
+    return true;
+}
+
+std::string no_space(const std::string& str) 
+{ 
+	size_t start = str.find_first_not_of(' ');
+	if (start == std::string::npos)
+	{ 
+		std::cout << "i need at least 1 alphabet" << std::endl; return "";
+	} 
+	size_t end = str.find_last_not_of(' ');
+	
+	return str.substr(start, end - start + 1);
+};
