@@ -6,20 +6,32 @@
 /*   By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 15:36:39 by daeunki2          #+#    #+#             */
-/*   Updated: 2025/08/07 15:46:19 by daeunki2         ###   ########.fr       */
+/*   Updated: 2025/08/24 03:32:59 by daeunki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
-// randomChump: Zombie 객체를 스택에 생성하고 announce
+Zombie::Zombie(std::string user_input)
+{
+    name = user_input;
+	std::cout << name << " is created" << std::endl;
+}
+Zombie::~Zombie()
+{
+	std::cout << name << " is destroyed" << std::endl;
+}
+void Zombie::announce(void)
+{
+    std::cout << name << ": BraiiiiiiinnnzzzZ..." << std::endl;
+}
+
 void randomChump(std::string name)
 {
     Zombie baby(name);
     baby.announce();
 }
 
-// newZombie: Zombie 객체를 힙에 생성하고 포인터 반환
 Zombie* newZombie(std::string name)
 {
     return new Zombie(name);

@@ -6,7 +6,7 @@
 /*   By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 16:24:41 by daeunki2          #+#    #+#             */
-/*   Updated: 2025/08/07 17:56:11 by daeunki2         ###   ########.fr       */
+/*   Updated: 2025/08/24 03:54:53 by daeunki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,8 @@ class Weapon
 	std::string		type;
 	
 	public:
-	Weapon() {}
 	Weapon(std::string type);
-	~Weapon() {}
+	~Weapon();
 	const std::string &getType(void) const;
 	void setType(const std::string& user_input);
 };

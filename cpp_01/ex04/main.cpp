@@ -6,7 +6,7 @@
 /*   By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 16:13:38 by daeunki2          #+#    #+#             */
-/*   Updated: 2025/08/13 17:05:26 by daeunki2         ###   ########.fr       */
+/*   Updated: 2025/08/24 04:04:19 by daeunki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,20 +43,23 @@ int main(int ac, char **av)
         std::string s1 = av[2];
         std::string s2 = av[3];
 
-        std::ifstream inputFile(filename);
-        if (!inputFile.is_open())
+        
+		if (s1.empty())
+        {
+            std::cerr << "Error: String to find must not be empty." << std::endl;
+            return 1;
+        }
+
+		std::ifstream inputFile;
+		inputFile.open(av[1]);
+		if (!inputFile.is_open())
         {
             std::cerr << "Error: Cannot open file " << filename << std::endl;
             return 1;
         }
         
-        if (s1.empty())
-        {
-            std::cerr << "Error: String to find must not be empty." << std::endl;
-            return 1;
-        }
-        
-        std::ofstream outputFile(filename + ".replace");
+        std::ofstream outputFile;
+		outputFile.open((filename + ".replace").c_str());
         if (!outputFile.is_open())
         {
             std::cerr << "Error: Cannot create output file " << filename + ".replace" << std::endl;
@@ -66,9 +69,7 @@ int main(int ac, char **av)
         std::string line;
         while (std::getline(inputFile, line))
         {
-            outputFile << search_replace(line, s1, s2);
-            if (!inputFile.eof())
-                outputFile << "\n";
+            outputFile << search_replace(line, s1, s2) <<"\n";
         }
 
         inputFile.close();
@@ -84,3 +85,5 @@ int main(int ac, char **av)
 
     return 0;
 }
+
+//valgrind --leak-check=full --track-fds=yes

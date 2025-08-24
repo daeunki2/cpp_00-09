@@ -6,7 +6,7 @@
 /*   By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 16:58:34 by daeunki2          #+#    #+#             */
-/*   Updated: 2025/08/07 17:56:41 by daeunki2         ###   ########.fr       */
+/*   Updated: 2025/08/24 00:57:13 by daeunki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ class HumanB
 {
 	private:
 	std::string		name;
-	Weapon			*weapon;
+	Weapon			*weapon; //subclass
 	
 	public:
 	HumanB(std::string name);

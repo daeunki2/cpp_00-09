@@ -6,7 +6,7 @@
 #    By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/15 09:40:09 by daeunki2          #+#    #+#              #
-#    Updated: 2025/08/07 15:56:32 by daeunki2         ###   ########.fr        #
+#    Updated: 2025/08/23 21:05:18 by daeunki2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,34 +33,40 @@ BOLD_WHITE = \033[1;37m
 RESET = \033[0m
 
 
+NAME    = Zombie
+CC      = c++
+CFLAGS  = -Wall -Wextra -Werror -std=c++98
 
-NAME = Zombie
-CC = c++
-CFLAGS = -Wall -Wextra -Werror -std=c++98
+OBJ_DIR = obj
+SRCS    = main.cpp Zombie.cpp
+OBJS    = $(SRCS:%.cpp=$(OBJ_DIR)/%.o)
 
-SRCS = Zombie.cpp main.cpp
-OBJS = Zombie.o main.o
-
+# 기본 규칙
 all: $(NAME)
 
+# 실행파일 만들기
 $(NAME): $(OBJS)
-	@echo "Building $(NAME) 🛠️"
 	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
-	@echo "Build Complete! ✅"
+	@echo "✅ Build complete: $(NAME)"
 
-%.o: %.cpp
+# 오브젝트 파일 만들기
+$(OBJ_DIR)/%.o: %.cpp | $(OBJ_DIR)
 	@$(CC) $(CFLAGS) -c $< -o $@
 
+# obj 디렉토리 자동 생성
+$(OBJ_DIR):
+	@mkdir -p $(OBJ_DIR)
+
+# 청소
 clean:
-	@echo "Cleaning object files 🧹"
-	@rm -f $(OBJS)
-	@echo "cleaning ✅"
+	@rm -rf $(OBJ_DIR)
+	@echo "🧹 Objects removed"
 
 fclean: clean
-	@echo "Cleaning Executable 🧹"
 	@rm -f $(NAME)
-	@echo "fclean ✅"
+	@echo "🧹 Executable removed"
 
 re: fclean all
 
 .PHONY: all clean fclean re
+

@@ -6,7 +6,7 @@
 /*   By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 18:35:40 by daeunki2          #+#    #+#             */
-/*   Updated: 2025/08/11 20:55:14 by daeunki2         ###   ########.fr       */
+/*   Updated: 2025/08/24 04:07:51 by daeunki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,10 @@ void Harl::complain(std::string level)
 
     std::string complainLevels[] =
     {
-        "debug",
-        "info",
-        "warning",
-        "error"
+        "DEBUG",
+        "INFO",
+        "WARNING",
+        "ERROR"
     };
 
     for (int depth = 0; depth < 4; depth++)

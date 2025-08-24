@@ -6,7 +6,7 @@
 /*   By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 19:28:40 by daeunki2          #+#    #+#             */
-/*   Updated: 2025/08/07 15:56:13 by daeunki2         ###   ########.fr       */
+/*   Updated: 2025/08/24 03:31:12 by daeunki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,10 @@ private:
     std::string name;
 
 public:
-    Zombie(std::string user_input)
-    {
-        name = user_input;
-    }
-    ~Zombie(){}
-    void announce(void)
-    {
-        std::cout << name << ": BraiiiiiiinnnzzzZ..." << std::endl;
-    }
+    Zombie(std::string user_input);
+    ~Zombie();
+    void announce(void);
 };
-
 
 //function
 void randomChump( std::string name);
