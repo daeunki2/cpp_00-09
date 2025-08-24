@@ -6,7 +6,7 @@
 /*   By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 18:35:40 by daeunki2          #+#    #+#             */
-/*   Updated: 2025/08/11 21:51:36 by daeunki2         ###   ########.fr       */
+/*   Updated: 2025/08/24 04:13:37 by daeunki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,12 +81,16 @@ void Harl::complain(std::string level)
 	{
 		case(0):
             (this->*function_pointer[0])();
+			std::cout << "\n";
 		case(1):
 			(this->*function_pointer[1])();
+			std::cout << "\n";
 		case(2):
 			(this->*function_pointer[2])();
+			std::cout << "\n";
 		case(3):
 			(this->*function_pointer[3])();
+			std::cout << "\n";
 			break;
 
 		default:

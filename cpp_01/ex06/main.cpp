@@ -6,7 +6,7 @@
 /*   By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 16:13:38 by daeunki2          #+#    #+#             */
-/*   Updated: 2025/08/11 21:41:50 by daeunki2         ###   ########.fr       */
+/*   Updated: 2025/08/24 04:10:26 by daeunki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,5 @@ int main(int ac, char **av)
 		harl.complain(av[1]);
 	else
 		harl.complain("irrelevant string");
-	return (EXIT_SUCCESS);
+	return (0);
 }
