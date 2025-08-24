@@ -6,7 +6,7 @@
 /*   By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 16:13:38 by daeunki2          #+#    #+#             */
-/*   Updated: 2025/08/07 16:19:57 by daeunki2         ###   ########.fr       */
+/*   Updated: 2025/08/24 04:24:09 by daeunki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,16 @@ int main()
 	std::string &stringREF = str;
 
 	std::cout << "Let's print adress" << std::endl;
-	std::cout << "the original str : " << &str << std::endl;
-	std::cout << "the pointer of str : " << &stringPTR << std::endl;
-	std::cout << "the referance of str : " << &stringREF << std::endl;
+	std::cout << "The address of str : " << &str << std::endl;
+	std::cout << "The address held by PTR : " << stringPTR << std::endl;
+	std::cout << "The adress of PTR itself : " << &stringPTR << std::endl;
+	std::cout << "\nThe address held by REF : " << &stringREF << std::endl;
+	std::cout << "Address of REF itself    : " << &stringREF << std::endl;
 	
-	std::cout << "Let's print value" << std::endl;
-	std::cout << "the original str : " << str << std::endl;
-	std::cout << "the pointer of str : " << *stringPTR << std::endl;
-	std::cout << "the referance of str : " << stringREF << std::endl;
+	std::cout << "\n\nLet's print value" << std::endl;
+	std::cout << "Value of str  : " << str << std::endl;
+	std::cout << "Value pointed by PTR: " << *stringPTR << std::endl;
+	std::cout << "Value of REF : " << stringREF << std::endl;
 
 	return 0;
 	

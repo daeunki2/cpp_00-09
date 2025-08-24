@@ -6,7 +6,7 @@
 #    By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/15 09:40:09 by daeunki2          #+#    #+#              #
-#    Updated: 2025/08/07 16:21:25 by daeunki2         ###   ########.fr        #
+#    Updated: 2025/08/24 03:53:00 by daeunki2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ BOLD_WHITE = \033[1;37m
 RESET = \033[0m
 
 
-NAME = Zombie
+NAME = program
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
