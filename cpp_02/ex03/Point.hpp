@@ -6,7 +6,7 @@
 /*   By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/14 14:17:38 by daeunki2          #+#    #+#             */
-/*   Updated: 2025/08/15 04:08:40 by daeunki2         ###   ########.fr       */
+/*   Updated: 2025/08/25 14:32:08 by daeunki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@ class Point {
 	Fixed const x;
 	Fixed const y;
  public:
-	Point(void);
+	Point(void);//Default constructor
 	Point(float const x, float const y);
-	Point(const Point& obj);
-	Point& operator=(const Point& obj);
-	~Point(void);
+	Point(const Point& obj);//Copy constructo
+	Point& operator=(const Point& obj);//Copy assignment operator
+	~Point(void);//Destructor
 	Fixed getX(void) const;
 	Fixed getY(void) const;
 };

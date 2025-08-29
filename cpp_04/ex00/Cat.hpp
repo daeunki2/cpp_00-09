@@ -1,25 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/15 14:08:43 by daeunki2          #+#    #+#             */
-/*   Updated: 2025/08/29 04:46:38 by daeunki2         ###   ########.fr       */
+/*   Created: 2025/08/29 11:24:33 by daeunki2          #+#    #+#             */
+/*   Updated: 2025/08/29 12:29:06 by daeunki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
-#include "ScavTrap.hpp"
+#ifndef CAT_HPP
+#define CAT_HPP
 
-int main()
+#include "Animal.hpp"
+#include <iostream>
+
+class Cat  : public Animal
 {
-    ScavTrap robot("Scout");
+	private :
 
-    robot.attack("Enemy");//overload
-	robot.ClapTrap::attack("enemy");//mother class
-    robot.guardGate();//original
+	public : 
+	Cat();//Default constructor
+	Cat& operator=(const Cat& other);//Copy assignment operator
+	Cat(const Cat& src);  //Copy constructor
+	virtual~Cat();// Destructor
 
-    return 0;
-}
+	void makeSound(void) const;
+	std::string getType() const;
+};
+
+#endif

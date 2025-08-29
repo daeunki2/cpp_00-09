@@ -6,7 +6,7 @@
 /*   By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 19:28:40 by daeunki2          #+#    #+#             */
-/*   Updated: 2025/08/15 01:29:09 by daeunki2         ###   ########.fr       */
+/*   Updated: 2025/08/25 14:32:50 by daeunki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ private:
 
 public:
     //inti
-    Fixed();
+    Fixed(); //Default constructor
     Fixed(const int init);
     Fixed(const float init);
-    Fixed(const Fixed& other);
+    Fixed(const Fixed& other);//Copy constructor
     //destroy
-    ~Fixed();
+    ~Fixed(); //Destructor
     //get,set
     int getRawBits(void) const;
     void setRawBits(int const raw);
@@ -37,7 +37,7 @@ public:
     float toFloat(void) const;
     int toInt(void) const;
     //overload
-    Fixed& operator=(const Fixed& other);
+    Fixed& operator=(const Fixed& other);//Copy assignment operator
     
     Fixed operator+(const Fixed& other) const;
     Fixed operator-(const Fixed& other) const;

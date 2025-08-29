@@ -1,25 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/15 14:08:43 by daeunki2          #+#    #+#             */
-/*   Updated: 2025/08/29 04:46:38 by daeunki2         ###   ########.fr       */
+/*   Created: 2025/08/29 11:24:42 by daeunki2          #+#    #+#             */
+/*   Updated: 2025/08/29 12:29:10 by daeunki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
-#include "ScavTrap.hpp"
+#ifndef DOG_HPP
+#define DOG_HPP
 
-int main()
+#include "Animal.hpp"
+#include <iostream>
+
+class Dog  : public Animal
 {
-    ScavTrap robot("Scout");
+	private :
 
-    robot.attack("Enemy");//overload
-	robot.ClapTrap::attack("enemy");//mother class
-    robot.guardGate();//original
+	public : 
+	Dog();//Default constructor
+	Dog& operator=(const Dog& other);//Copy assignment operator
+	Dog(const Dog& src);  //Copy constructor
+	virtual~Dog();// Destructor
 
-    return 0;
-}
+	void makeSound(void) const;
+	std::string getType()const;
+};
+
+#endif

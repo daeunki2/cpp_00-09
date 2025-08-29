@@ -6,7 +6,7 @@
 /*   By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 19:25:20 by daeunki2          #+#    #+#             */
-/*   Updated: 2025/08/14 22:52:52 by daeunki2         ###   ########.fr       */
+/*   Updated: 2025/08/24 04:47:27 by daeunki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,18 +24,20 @@ int main(void)
   return 0;
 }
 
-/*
-Default constructor called
-Copy constructor called
-Copy assignment operator called // <-- 구현에 따라 이 줄이 안 나올 수도 있음
-getRawBits member function called
-getRawBits member function called
-0
-getRawBits member function called
-0
-getRawBits member function called
-0
-Destructor called
-Destructor called
-Destructor called
-*/
+// $> ./a.out
+// Default constructor called
+// Copy constructor called
+// Copy assignment operator called // <-- This line may be missing depending on your implementation
+// getRawBits member function called
+// Default constructor called
+// Copy assignment operator called
+// getRawBits member function called
+// getRawBits member function called
+// 0
+// getRawBits member function called
+// 0
+// getRawBits member function called
+// 0
+// Destructor called
+// Destructor called
+// Destruct

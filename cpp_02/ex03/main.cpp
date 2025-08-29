@@ -6,7 +6,7 @@
 /*   By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 19:25:20 by daeunki2          #+#    #+#             */
-/*   Updated: 2025/08/15 04:37:57 by daeunki2         ###   ########.fr       */
+/*   Updated: 2025/08/25 15:44:33 by daeunki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,23 +23,23 @@ void show(Point const a, Point const b, Point const c, Point const p)
 
 void correction(Point const a, Point const b, Point const c, Point const p)
 {
-	std::cout << "Point a.x = " << a.getX() << " a.y = " << a.getY() << std::endl;
-	std::cout << "Point b.x = " << b.getX() << " b.y = " << b.getY() << std::endl;
-	std::cout << "Point c.x = " << c.getX() << " c.y = " << c.getY() << std::endl;
-	std::cout << "Point p.x = " << p.getX() << " p.y = " << p.getY() << std::endl;
+	std::cout << "Point a = " << a.getX() << " " << a.getY() << std::endl;
+	std::cout << "Point b = " << b.getX() << " " << b.getY() << std::endl;
+	std::cout << "Point c = " << c.getX() << " " << c.getY() << std::endl;
+	std::cout << "Point p = " << p.getX() << " " << p.getY() << std::endl;
 	
 	if (bsp(a, b, c, p))
 	{
 		show(a, b, c, p);
 		std::cout << "abc = abp + acp + bcp" << std::endl;
-		std::cout << "it is in the triangle" << std::endl;
+		std::cout  << "\033[32m" << "it is in the triangle" << "\033[0m" << std::endl;
 	}
 	else
 	{
 		show(a, b, c, p);
 		std::cout << "abc != abp + acp + bcp || " << 
 		 "abp = 0 || acp = 0 || bcp = 0" << std::endl;
-		std::cout << "it is out of the triangle" << std::endl;
+		std::cout << "\033[31m" <<"it is out of the triangle" << "\033[0m" << std::endl;
 	}
 }
 

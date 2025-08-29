@@ -6,7 +6,7 @@
 /*   By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 15:14:49 by daeunki2          #+#    #+#             */
-/*   Updated: 2025/08/19 19:22:47 by daeunki2         ###   ########.fr       */
+/*   Updated: 2025/08/29 22:36:39 by daeunki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ class PhoneBook
     Contact	Pages[8];
 	int		Contact_Count;
 	int		Oldest_Index;
-	
-	public : 
+
+	public :
 	PhoneBook();
 
     void 		add();

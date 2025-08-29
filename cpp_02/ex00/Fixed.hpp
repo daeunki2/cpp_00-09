@@ -6,7 +6,7 @@
 /*   By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 19:28:40 by daeunki2          #+#    #+#             */
-/*   Updated: 2025/08/14 14:42:09 by daeunki2         ###   ########.fr       */
+/*   Updated: 2025/08/25 14:20:59 by daeunki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ private:
     static const int    bite_container;
 
 public:
-    Fixed();
-    Fixed(const Fixed& other);
-    Fixed& operator=(const Fixed& other);
-    ~Fixed();
+    Fixed(); //Default constructor
+    Fixed(const Fixed& other); //Copy constructor
+    Fixed& operator=(const Fixed& other);//Copy assignment operator
+    ~Fixed();//Destructor
     int getRawBits(void) const;
     void setRawBits(int const raw);
 };

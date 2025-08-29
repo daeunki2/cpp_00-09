@@ -1,25 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/15 14:08:43 by daeunki2          #+#    #+#             */
-/*   Updated: 2025/08/29 04:46:38 by daeunki2         ###   ########.fr       */
+/*   Created: 2025/08/29 04:12:31 by daeunki2          #+#    #+#             */
+/*   Updated: 2025/08/29 04:15:10 by daeunki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef FRAGTRAP_HPP
+#define FRAGTRAP_HPP
+
 #include "ClapTrap.hpp"
-#include "ScavTrap.hpp"
 
-int main()
+class FragTrap : public ClapTrap
 {
-    ScavTrap robot("Scout");
+	private :
 
-    robot.attack("Enemy");//overload
-	robot.ClapTrap::attack("enemy");//mother class
-    robot.guardGate();//original
+	public :
+	FragTrap();//Default constructor
+	~FragTrap();// Destructor
+	FragTrap(std::string input);
+	FragTrap& operator=(const FragTrap& other);//Copy assignment operator
+	FragTrap(const FragTrap& src);  //Copy constructor
+	//
+	void	highFivesGuys(void);
+		
+};
 
-    return 0;
-}
+#endif

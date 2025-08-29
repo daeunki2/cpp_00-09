@@ -6,7 +6,7 @@
 /*   By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 15:36:39 by daeunki2          #+#    #+#             */
-/*   Updated: 2025/08/15 00:03:38 by daeunki2         ###   ########.fr       */
+/*   Updated: 2025/08/24 05:08:16 by daeunki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,11 @@ Fixed::Fixed(const int init)
     */
 }
 
-Fixed::Fixed(const float init)
+Fixed::Fixed(const float init) //37.25
 {
-    value = round(init * (1 << fractional_bits));
+    value = round(init * (1 << fractional_bits)); //37.25 * 256
     std::cout << "Float constructor called" << std::endl;
-
+	//like this you can store a value in a int
 }
 
 //복사생성자

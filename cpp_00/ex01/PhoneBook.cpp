@@ -6,7 +6,7 @@
 /*   By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 22:54:29 by daeunki2          #+#    #+#             */
-/*   Updated: 2025/08/19 19:42:08 by daeunki2         ###   ########.fr       */
+/*   Updated: 2025/08/29 22:39:13 by daeunki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void	PhoneBook::show_detail_page(int index)
 	std::cout << "Phone          : " << Pages[index].get_phone_number() <<std::endl;
 	std::cout << "Darkest Secret : " << Pages[index].get_darkest_secret() << std::endl;
 }
-	
+
 void PhoneBook::show_all_contacts() const 
 {
         std::cout << "┌──────────┬──────────┬──────────┬──────────┐\n";

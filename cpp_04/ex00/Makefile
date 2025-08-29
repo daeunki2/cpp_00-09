@@ -6,7 +6,7 @@
 #    By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/15 13:42:26 by daeunki2          #+#    #+#              #
-#    Updated: 2025/08/29 00:05:43 by daeunki2         ###   ########.fr        #
+#    Updated: 2025/08/29 12:20:44 by daeunki2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,8 +40,9 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98
 OBJ_DIR = obj
 
 SRCS = main.cpp \
-		ClapTrap.cpp \
-		ScavTrap.cpp
+		Animal.cpp \
+		Cat.cpp \
+		Dog.cpp
 
 OBJS = $(SRCS:%.cpp=$(OBJ_DIR)/%.o)
 

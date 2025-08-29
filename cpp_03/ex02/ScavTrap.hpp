@@ -1,25 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/15 14:08:43 by daeunki2          #+#    #+#             */
-/*   Updated: 2025/08/29 04:46:38 by daeunki2         ###   ########.fr       */
+/*   Created: 2025/08/29 00:06:19 by daeunki2          #+#    #+#             */
+/*   Updated: 2025/08/29 03:55:47 by daeunki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef SCAVTRAP_HPP
+#define SCAVTRAP_HPP
+
 #include "ClapTrap.hpp"
-#include "ScavTrap.hpp"
 
-int main()
+class ScavTrap : public ClapTrap
 {
-    ScavTrap robot("Scout");
+	private :
 
-    robot.attack("Enemy");//overload
-	robot.ClapTrap::attack("enemy");//mother class
-    robot.guardGate();//original
+	public :
+	ScavTrap();//Default constructor
+	~ScavTrap();// Destructor
+	ScavTrap(std::string input);
+	ScavTrap& operator=(const ScavTrap& other);//Copy assignment operator
+	ScavTrap(const ScavTrap& src);  //Copy constructor
+	//
+	void guardGate();
+	void attack(const std::string& target);
+		
+};
 
-    return 0;
-}
+#endif

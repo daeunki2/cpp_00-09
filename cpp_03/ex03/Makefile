@@ -6,7 +6,7 @@
 #    By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/15 13:42:26 by daeunki2          #+#    #+#              #
-#    Updated: 2025/08/29 00:05:43 by daeunki2         ###   ########.fr        #
+#    Updated: 2025/08/29 04:26:04 by daeunki2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,9 @@ OBJ_DIR = obj
 
 SRCS = main.cpp \
 		ClapTrap.cpp \
-		ScavTrap.cpp
+		ScavTrap.cpp \
+		FragTrap.cpp \
+		DiamondTrap.cpp
 
 OBJS = $(SRCS:%.cpp=$(OBJ_DIR)/%.o)
 

@@ -6,7 +6,7 @@
 /*   By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/15 13:43:05 by daeunki2          #+#    #+#             */
-/*   Updated: 2025/08/29 03:50:46 by daeunki2         ###   ########.fr       */
+/*   Updated: 2025/08/29 06:56:34 by daeunki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,11 @@ ClapTrap:: ClapTrap() : name("no_name"), HitPoint(10), EnergyPoint(10), AttackDa
 ClapTrap::ClapTrap(std::string input) : name(input), HitPoint(10), EnergyPoint(10), AttackDamage(0)
 {
 	std::cout << "ClapTrap " << name <<" constructor called" << std::endl;
+}
+ClapTrap::ClapTrap(const std::string& n, int hp, int ep, int ad)
+: name(n), HitPoint(hp), EnergyPoint(ep), AttackDamage(ad)
+{
+    std::cout << "ClapTrap " << name << " constructor called" << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap& src)
@@ -92,7 +97,6 @@ void ClapTrap::beRepaired(unsigned int amount)
     {
         EnergyPoint--;
         HitPoint += amount;
-
         std::cout << "ClapTrap " << name << " repairs itself for " << amount
               << " points! Current HP: " << HitPoint << "\n";
     }

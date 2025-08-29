@@ -1,25 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Animal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/15 14:08:43 by daeunki2          #+#    #+#             */
-/*   Updated: 2025/08/29 04:46:38 by daeunki2         ###   ########.fr       */
+/*   Created: 2025/08/29 11:25:37 by daeunki2          #+#    #+#             */
+/*   Updated: 2025/08/29 12:26:40 by daeunki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
-#include "ScavTrap.hpp"
 
-int main()
+#ifndef ANIMAL_HPP
+#define ANIMAL_HPP
+
+#include <iostream>
+
+
+class Animal
 {
-    ScavTrap robot("Scout");
+	protected :
+	std::string type;
 
-    robot.attack("Enemy");//overload
-	robot.ClapTrap::attack("enemy");//mother class
-    robot.guardGate();//original
+	public : 
+	Animal();//Default constructor
+	Animal(std::string type);
+	Animal& operator=(const Animal& other);//Copy assignment operator
+	Animal(const Animal& src);  //Copy constructor
+	virtual~Animal();// Destructor
 
-    return 0;
-}
+	virtual void makeSound(void) const;
+	std::string getType(void) const;
+
+};
+
+#endif

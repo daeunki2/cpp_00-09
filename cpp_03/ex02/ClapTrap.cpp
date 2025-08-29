@@ -6,7 +6,7 @@
 /*   By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/15 13:43:05 by daeunki2          #+#    #+#             */
-/*   Updated: 2025/08/29 03:50:46 by daeunki2         ###   ########.fr       */
+/*   Updated: 2025/08/15 14:47:00 by daeunki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,6 @@ void ClapTrap::beRepaired(unsigned int amount)
     {
         EnergyPoint--;
         HitPoint += amount;
-
         std::cout << "ClapTrap " << name << " repairs itself for " << amount
               << " points! Current HP: " << HitPoint << "\n";
     }

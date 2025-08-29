@@ -6,7 +6,7 @@
 /*   By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 19:25:20 by daeunki2          #+#    #+#             */
-/*   Updated: 2025/08/14 23:12:58 by daeunki2         ###   ########.fr       */
+/*   Updated: 2025/08/25 15:39:31 by daeunki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,3 +34,28 @@ int main(void) {
 
     return 0;
 }
+
+/*
+$> ./a.out
+Default constructor called
+Int constructor called
+Float constructor called
+Copy constructor called
+Copy assignment operator called
+Float constructor called
+Copy assignment operator called
+Destructor called
+a is 1234.43
+b is 10
+c is 42.4219
+d is 10
+a is 1234 as integer
+b is 10 as integer
+c is 42 as integer
+d is 10 as integer
+Destructor called
+Destructor called
+Destructor called
+Destructor called
+$>
+*/
