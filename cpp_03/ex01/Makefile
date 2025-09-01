@@ -6,7 +6,7 @@
 #    By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/15 13:42:26 by daeunki2          #+#    #+#              #
-#    Updated: 2025/08/29 00:05:43 by daeunki2         ###   ########.fr        #
+#    Updated: 2025/09/01 10:24:01 by daeunki2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,15 +35,17 @@ RESET = \033[0m
 
 NAME = program
 CC = c++
-CFLAGS = -Wall -Wextra -Werror -std=c++98
+CFLAGS = -Wall -Wextra -Werror -std=c++98 -I $(INC_DIR)
 
 OBJ_DIR = obj
+SRC_DIR = src
+INC_DIR = inc
 
-SRCS = main.cpp \
-		ClapTrap.cpp \
-		ScavTrap.cpp
+SRCS = src/main.cpp \
+		src/ClapTrap.cpp \
+		src/ScavTrap.cpp
 
-OBJS = $(SRCS:%.cpp=$(OBJ_DIR)/%.o)
+OBJS = $(SRCS:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
 
 all: $(NAME)
 
@@ -55,7 +57,7 @@ $(NAME): $(OBJ_DIR) $(OBJS)
 	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 	@echo "Build Complete! ✅"
 
-$(OBJ_DIR)/%.o: %.cpp | $(OBJ_DIR)
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp | $(OBJ_DIR)
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
