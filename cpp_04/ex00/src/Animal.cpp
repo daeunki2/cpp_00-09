@@ -6,7 +6,7 @@
 /*   By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 11:25:41 by daeunki2          #+#    #+#             */
-/*   Updated: 2025/08/29 12:14:19 by daeunki2         ###   ########.fr       */
+/*   Updated: 2025/08/31 17:02:59 by daeunki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@
 Animal::Animal()//Default constructor
 :type("Animal")
 {
-	std::cout << "Animal created by defaukt constructor" << std::endl;
+	std::cout << "Animal created by default constructor" << std::endl;
 };
 
 Animal::Animal(std::string type)//constructor
 :type(type)
 {
-	std::cout << type <<"Animal created by defaukt constructor" << std::endl;
+	std::cout <<"Animal created with type " << type << " by default constructor" << std::endl;
 };
 	
 Animal& Animal::operator=(const Animal& other)//Copy assignment operator

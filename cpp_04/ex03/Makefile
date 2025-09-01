@@ -6,7 +6,7 @@
 #    By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/15 13:42:26 by daeunki2          #+#    #+#              #
-#    Updated: 2025/09/01 00:48:04 by daeunki2         ###   ########.fr        #
+#    Updated: 2025/09/01 00:10:04 by daeunki2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,20 +35,18 @@ RESET = \033[0m
 
 NAME = program
 CC = c++
-CFLAGS = -Wall -Wextra -Werror -std=c++98 -I $(INC_DIR)
+CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 OBJ_DIR = obj
-SRC_DIR = src
-INC_DIR = inc
 
-SRCS = src/main.cpp \
-		src/Animal.cpp \
-		src/Cat.cpp \
-		src/Dog.cpp \
-		src/WrongAnimal.cpp \
-		src/WrongCat.cpp
+SRCS = main.cpp \
+		AMateria.cpp \
+		Ice.cpp \
+		Cure.cpp \
+		Character.cpp \
+		MateriaSource.cpp
 
-OBJS = $(SRCS:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
+OBJS = $(SRCS:%.cpp=$(OBJ_DIR)/%.o)
 
 all: $(NAME)
 
@@ -60,7 +58,7 @@ $(NAME): $(OBJ_DIR) $(OBJS)
 	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 	@echo "Build Complete! ✅"
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp | $(OBJ_DIR)
+$(OBJ_DIR)/%.o: %.cpp | $(OBJ_DIR)
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 clean:

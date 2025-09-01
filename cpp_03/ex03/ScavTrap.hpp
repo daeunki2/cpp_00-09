@@ -6,7 +6,7 @@
 /*   By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 00:06:19 by daeunki2          #+#    #+#             */
-/*   Updated: 2025/08/29 06:40:42 by daeunki2         ###   ########.fr       */
+/*   Updated: 2025/08/31 16:06:25 by daeunki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 class ScavTrap : virtual public ClapTrap
 {
 	private :
+	bool	guarding_gate;
 
 	public :
 	ScavTrap();//Default constructor

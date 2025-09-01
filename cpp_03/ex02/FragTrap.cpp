@@ -6,7 +6,7 @@
 /*   By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 04:12:26 by daeunki2          #+#    #+#             */
-/*   Updated: 2025/08/29 04:47:41 by daeunki2         ###   ########.fr       */
+/*   Updated: 2025/08/31 16:29:33 by daeunki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ FragTrap::FragTrap(const FragTrap& src)
 	std::cout << "\033[33m" << "FragTrap copy constructor" << name <<" called" << "\033[0m" << std::endl;
 };
 
-void	FragTrap:: highFivesGuys(void)
+void FragTrap::highFivesGuys(void)
 {
-	std::cout << "\033[33m" << "FragTrap " << name << "'s Gate keeper mode is on now!\n";
-};
+	std::cout << "\033[33mFragTrap " << name << " high fives guys!\033[0m" << std::endl;
+}
 

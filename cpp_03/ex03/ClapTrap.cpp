@@ -6,7 +6,7 @@
 /*   By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/15 13:43:05 by daeunki2          #+#    #+#             */
-/*   Updated: 2025/08/29 06:56:34 by daeunki2         ###   ########.fr       */
+/*   Updated: 2025/08/31 16:18:58 by daeunki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,4 +104,12 @@ void ClapTrap::beRepaired(unsigned int amount)
     {
         std::cout << "ClapTrap " << name << " has no energy or is dead and can't repair.\n";
     }
+}
+
+void ClapTrap::printStatus(void)
+{
+	std::cout	<< "ClapTrap name is " << name << "\n"
+				<< "HitPoint is " << HitPoint << "\n"
+				<< "EnergyPoint is " << EnergyPoint << "\n"
+				<< "AttackDamage is " << AttackDamage << std::endl;
 }

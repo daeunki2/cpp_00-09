@@ -1,35 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
+/*   Brain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/29 00:06:19 by daeunki2          #+#    #+#             */
-/*   Updated: 2025/08/31 15:49:45 by daeunki2         ###   ########.fr       */
+/*   Created: 2025/08/31 19:34:00 by daeunki2          #+#    #+#             */
+/*   Updated: 2025/08/31 21:26:34 by daeunki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCAVTRAP_HPP
-#define SCAVTRAP_HPP
+#ifndef BRAIN_HPP
+#define BRAIN_HPP
 
-#include "ClapTrap.hpp"
+#include <iostream>
 
-class ScavTrap : public ClapTrap
+class Brain
 {
-	private :
-	bool	guarding_gate;
+	private : 
+	std::string		idea[100];
 
 	public :
-	ScavTrap();//Default constructor
-	~ScavTrap();// Destructor
-	ScavTrap(std::string input);
-	ScavTrap& operator=(const ScavTrap& other);//Copy assignment operator
-	ScavTrap(const ScavTrap& src);  //Copy constructor
-	//
-	void guardGate();
-	void attack(const std::string& target);
-		
+	Brain();
+	Brain(std::string idea);
+	Brain(const Brain &src);
+	~Brain();
+	Brain& operator=(const Brain& src);
+
+	void set_idea(std::string idea);
+	std::string get_idea(int n);
+	
 };
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 00:06:15 by daeunki2          #+#    #+#             */
-/*   Updated: 2025/08/29 04:17:55 by daeunki2         ###   ########.fr       */
+/*   Updated: 2025/08/31 16:24:28 by daeunki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@ ScavTrap::ScavTrap(std::string input)//여기서 원본의 생성자 사용 가�
 	this->HitPoint = 100;
 	this->EnergyPoint = 50;
 	this->AttackDamage = 20;
-	std::cout << "\033[32m" << "ScavTrap" << name << "constructor called" <<  "\033[0m" << std::endl;
+	std::cout << "\033[32m" << "ScavTrap " << name << " constructor called" <<  "\033[0m" << std::endl;
 };
 
 ScavTrap::~ScavTrap()
 {
-	std::cout<< "\033[32m" << "ScavTrap " << name << "destructor called" << "\033[0m" << std::endl;
+	std::cout<< "\033[32m" << "ScavTrap " << name << " destructor called" << "\033[0m" << std::endl;
 };
 
 ScavTrap& ScavTrap::operator=(const ScavTrap& src)
@@ -53,10 +53,6 @@ ScavTrap::ScavTrap(const ScavTrap& src)
 	std::cout << "\033[32m" << "ScavTrap copy constructor" << name <<" called" << "\033[0m" << std::endl;
 };
 
-void	ScavTrap::guardGate()
-{
-	std::cout << "\033[32m" << "ScavTrap " << name << "'s Gate keeper mode is on now!\n";
-};
 
 void ScavTrap::attack(const std::string& target)
 {
@@ -70,4 +66,15 @@ void ScavTrap::attack(const std::string& target)
     {
         std::cout << "\033[32m" << "ScavTrap " << name << " has no energy or is dead and can't attack."<< "\033[0m" <<std::endl;
     }
+}
+
+void	ScavTrap::guardGate(void)
+{
+	if (this->guarding_gate == false)
+	{
+		this->guarding_gate = true;
+		std::cout << "ScavTrap " << this->name << " is now guarding the gate." << std::endl;
+	}
+	else
+		std::cout << "\033[33mScavTrap " << this->name << " is already guarding the gate.\033[0m" << std::endl;
 }

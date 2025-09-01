@@ -1,35 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
+/*   WrongCat.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/29 00:06:19 by daeunki2          #+#    #+#             */
-/*   Updated: 2025/08/31 15:49:45 by daeunki2         ###   ########.fr       */
+/*   Created: 2025/08/31 16:43:21 by daeunki2          #+#    #+#             */
+/*   Updated: 2025/08/31 16:56:16 by daeunki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCAVTRAP_HPP
-#define SCAVTRAP_HPP
 
-#include "ClapTrap.hpp"
+#ifndef WRONGCAT_HPP
+#define WRONGCAT_HPP
 
-class ScavTrap : public ClapTrap
+#include "WrongAnimal.hpp"
+#include <iostream>
+
+class WrongCat  : public WrongAnimal
 {
 	private :
-	bool	guarding_gate;
 
-	public :
-	ScavTrap();//Default constructor
-	~ScavTrap();// Destructor
-	ScavTrap(std::string input);
-	ScavTrap& operator=(const ScavTrap& other);//Copy assignment operator
-	ScavTrap(const ScavTrap& src);  //Copy constructor
-	//
-	void guardGate();
-	void attack(const std::string& target);
-		
+	public : 
+	WrongCat();//Default constructor
+	WrongCat& operator=(const WrongCat& other);//Copy assignment operator
+	WrongCat(const WrongCat& src);  //Copy constructor
+	virtual~WrongCat();// Destructor
+
+	std::string getType() const;
 };
 
 #endif

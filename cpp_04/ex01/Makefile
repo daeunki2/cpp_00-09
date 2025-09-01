@@ -6,7 +6,7 @@
 #    By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/15 13:42:26 by daeunki2          #+#    #+#              #
-#    Updated: 2025/09/01 00:48:04 by daeunki2         ###   ########.fr        #
+#    Updated: 2025/09/01 00:51:04 by daeunki2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,6 +43,7 @@ INC_DIR = inc
 
 SRCS = src/main.cpp \
 		src/Animal.cpp \
+		src/Brain.cpp \
 		src/Cat.cpp \
 		src/Dog.cpp \
 		src/WrongAnimal.cpp \

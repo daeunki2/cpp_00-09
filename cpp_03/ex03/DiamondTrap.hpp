@@ -6,18 +6,20 @@
 /*   By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 04:25:50 by daeunki2          #+#    #+#             */
-/*   Updated: 2025/08/29 19:00:05 by daeunki2         ###   ########.fr       */
+/*   Updated: 2025/08/31 16:12:19 by daeunki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DIAMONDTRAP_HPP
 #define DIAMONDTRAP_HPP
 
-#include "ClapTrap.hpp"
-#include "ScavTrap.hpp"
-#include "FragTrap.hpp"
+# include <iostream>
+# include <string>
+# include "ScavTrap.hpp"
+# include "FragTrap.hpp"
 
-class DiamondTrap : public ScavTrap, public ClapTrap
+
+class DiamondTrap : public ScavTrap, public FragTrap
 {
 	private :
 		std::string	d_name;
@@ -30,7 +32,7 @@ class DiamondTrap : public ScavTrap, public ClapTrap
 	DiamondTrap(const DiamondTrap& src);  //Copy constructor
 	//
 	void	whoAmI();
-	void	showmetheadress();
+	void	printStatus(void);
 		
 };
 

@@ -6,7 +6,7 @@
 /*   By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 00:06:15 by daeunki2          #+#    #+#             */
-/*   Updated: 2025/08/29 04:17:35 by daeunki2         ###   ########.fr       */
+/*   Updated: 2025/08/31 18:12:45 by daeunki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,7 @@ ScavTrap::ScavTrap(const ScavTrap& src)
 	std::cout << "\033[32m" << "ScavTrap copy constructor" << name <<" called" << "\033[0m" << std::endl;
 };
 
-void	ScavTrap::guardGate()
-{
-	std::cout << "\033[32m" << "ScavTrap " << name << "'s Gate keeper mode is on now!\n";
-};
+
 
 void ScavTrap::attack(const std::string& target)
 {
@@ -70,4 +67,15 @@ void ScavTrap::attack(const std::string& target)
     {
         std::cout << "\033[32m" << "ScavTrap " << name << " has no energy or is dead and can't attack."<< "\033[0m" <<std::endl;
     }
+}
+
+void	ScavTrap::guardGate(void)
+{
+	if (this->guarding_gate == false)
+	{
+		this->guarding_gate = true;
+		std::cout  << this->name << " is now guarding the gate." << std::endl;
+	}
+	else
+		std::cout << "\033[32m" << this->name << " is already guarding the gate.\033[0m" << std::endl;
 }

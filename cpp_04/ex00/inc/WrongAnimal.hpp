@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/29 11:25:37 by daeunki2          #+#    #+#             */
-/*   Updated: 2025/08/29 12:26:40 by daeunki2         ###   ########.fr       */
+/*   Created: 2025/08/31 16:39:49 by daeunki2          #+#    #+#             */
+/*   Updated: 2025/08/31 16:50:44 by daeunki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-#ifndef ANIMAL_HPP
-#define ANIMAL_HPP
+#ifndef WRONGANIMAL_HPP
+#define WRONGANIMAL_HPP
 
 #include <iostream>
 
 
-class Animal
+class WrongAnimal
 {
 	protected :
-	std::string type;
-
+	std::string	type;
+	
 	public : 
-	Animal();//Default constructor
-	Animal(std::string type);
-	Animal& operator=(const Animal& other);//Copy assignment operator
-	Animal(const Animal& src);  //Copy constructor
-	virtual~Animal();// Destructor
+	WrongAnimal();//Default constructor
+	WrongAnimal(std::string type);
+	WrongAnimal& operator=(const WrongAnimal& other);//Copy assignment operator
+	WrongAnimal(const WrongAnimal& src);  //Copy constructor
+	virtual~WrongAnimal();// Destructor
 
 	virtual void makeSound(void) const;
 	std::string getType(void) const;

@@ -6,42 +6,75 @@
 /*   By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 04:25:46 by daeunki2          #+#    #+#             */
-/*   Updated: 2025/08/29 19:04:24 by daeunki2         ###   ########.fr       */
+/*   Updated: 2025/08/31 16:21:26 by daeunki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
-#include "ScavTrap.hpp"
-#include "FragTrap.hpp"
 #include "DiamondTrap.hpp"
 
+#include "DiamondTrap.hpp"
 
-DiamondTrap::DiamondTrap()//Default constructor
-: ScavTrap(), FragTrap(), ClapTrap("default_clap_name")
+// Default constructor
+DiamondTrap::DiamondTrap()
+: ClapTrap("default_clap_name"), ScavTrap(), FragTrap(), d_name("default")
 {
-	this->d_name = "default";
-	this->HitPoint = FragTrap::HitPoint;
-	this->EnergyPoint = ScavTrap::EnergyPoint;
-	this->AttackDamage = ScavTrap::AttackDamage;
-};
+    HitPoint = 100;     
+    EnergyPoint = 50;   
+    AttackDamage = 30;  
+    std::cout  << "\033[34m" << "DiamondTrap default constructor" << "\033[0m" << std::endl;
+}
 
-DiamondTrap::~DiamondTrap()// Destructor
+// Constructor with name
+DiamondTrap::DiamondTrap(std::string input)
+: ClapTrap(input + "_clap_name"), ScavTrap(), FragTrap(), d_name(input)
 {
-	
-};
+    HitPoint = 100;     
+    EnergyPoint = 50;   
+    AttackDamage = 30;  
+    std::cout << "\033[34m" << "DiamondTrap " << d_name << " constructor"<< "\033[0m" << std::endl;
+}
 
-DiamondTrap::DiamondTrap(std::string input);
-DiamondTrap& DiamondTrap::operator=(const DiamondTrap& other);//Copy assignment operator
-DiamondTrap::DiamondTrap(const DiamondTrap& src);  //Copy constructor
-	//
-void	DiamondTrap::whoAmI()
+// Copy constructor
+DiamondTrap::DiamondTrap(const DiamondTrap& src)
+: ClapTrap(src), ScavTrap(src), FragTrap(src), d_name(src.d_name)
 {
+    std::cout << "\033[34m" << "DiamondTrap " << d_name << " copy constructor"<< "\033[0m" << std::endl;
+}
 
-	
-};
-void	DiamondTrap::showmetheadress()
+// Copy assignment
+DiamondTrap& DiamondTrap::operator=(const DiamondTrap& other)
 {
+    if (this != &other)
+    {
+        ClapTrap::operator=(other);
+        d_name = other.d_name;
+        HitPoint = other.HitPoint;
+        EnergyPoint = other.EnergyPoint;
+        AttackDamage = other.AttackDamage;
+    }
+    return *this;
+}
 
-	
-};
-		
+// Destructor
+DiamondTrap::~DiamondTrap()
+{
+    std::cout << "\033[34m"  << "DiamondTrap " << d_name << " destructor" << "\033[0m" << std::endl;
+}
+
+// Member functions
+void DiamondTrap::whoAmI()
+{
+    std::cout << "\033[34m" << "DiamondTrap name: " << d_name 
+              << ", ClapTrap name: " << ClapTrap::name << "\033[0m" << std::endl;
+}
+
+void DiamondTrap::printStatus(void)
+{
+	std::cout	<< "\033[34m" 
+				<< "This DiamondTrap name is " << this->name << "\n"
+				<< "HitPoint is " << HitPoint << "\n"
+				<< "EnergyPoint is " << EnergyPoint << "\n"
+				<< "AttackDamage is " << AttackDamage << "\033[0m" << std::endl;
+}
+
+
