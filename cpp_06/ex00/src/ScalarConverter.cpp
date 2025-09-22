@@ -6,7 +6,7 @@
 /*   By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 20:51:46 by daeunki2          #+#    #+#             */
-/*   Updated: 2025/09/15 17:08:17 by daeunki2         ###   ########.fr       */
+/*   Updated: 2025/09/15 17:45:57 by daeunki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,9 +103,12 @@ bool ScalarConverter::is_Int(const std::string &trimmed)
 {
     char *endptr;
     long value = std::strtol(trimmed.c_str(), &endptr, 10);
-    
-    // 문자열 끝까지 변환되었고, 변환된 값이 int 범위에 속하는지 확인
-    return *endptr == '\0' && (value >= std::numeric_limits<int>::min() && value <= std::numeric_limits<int>::max());
+
+    if (*endptr != '\0')
+        return false;
+    if (value < std::numeric_limits<int>::min() && value > std::numeric_limits<int>::max())
+        return false;
+    return true;
 }
 
 
@@ -117,7 +120,9 @@ bool ScalarConverter::is_Float(const std::string &trimmed)
     }
     char *endptr;
     std::strtod(trimmed.c_str(), &endptr);
-    return *endptr == 'f' && *(endptr + 1) == '\0';
+    if (*endptr == 'f' && *(endptr + 1) == '\0')
+        return true;
+    return false;
 }
 
 bool ScalarConverter::is_Double(const std::string &trimmed)
@@ -128,7 +133,9 @@ bool ScalarConverter::is_Double(const std::string &trimmed)
     }
     char *endptr;
     std::strtod(trimmed.c_str(), &endptr);
-    return *endptr == '\0';
+    if (*endptr != '\0')
+        return false;
+    return true;
 }
 
 
@@ -213,7 +220,8 @@ void ScalarConverter::fromDouble(double d)
     else
         std::cout << "int: " << static_cast<int>(d) << std::endl;
     
-    if (std::isinf(d) || (d < -std::numeric_limits<float>::max() && d != -std::numeric_limits<float>::infinity()) || (d > std::numeric_limits<float>::max() && d != std::numeric_limits<float>::infinity()))
+    if (std::isinf(d) || (d < -std::numeric_limits<float>::max() && d != -std::numeric_limits<float>::infinity()) 
+         || (d > std::numeric_limits<float>::max() && d != std::numeric_limits<float>::infinity()))
         std::cout << "float: impossible" << std::endl;
     else
     {

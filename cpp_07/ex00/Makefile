@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/08/15 13:42:26 by daeunki2          #+#    #+#              #
-#    Updated: 2025/09/21 17:44:28 by daeunki2         ###   ########.fr        #
+#    Created: 2025/09/21 19:25:35 by daeunki2          #+#    #+#              #
+#    Updated: 2025/09/21 19:25:55 by daeunki2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,7 +42,7 @@ SRC_DIR = src
 INC_DIR = inc
 
 SRCS = src/main.cpp \
-		src/ScalarConverter.cpp
+		
 		
 OBJS = $(SRCS:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
 

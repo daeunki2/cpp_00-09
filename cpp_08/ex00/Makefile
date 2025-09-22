@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/08/15 13:42:26 by daeunki2          #+#    #+#              #
-#    Updated: 2025/09/21 17:44:28 by daeunki2         ###   ########.fr        #
+#    Created: 2025/09/22 10:41:08 by daeunki2          #+#    #+#              #
+#    Updated: 2025/09/22 10:42:55 by daeunki2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ BOLD_WHITE = \033[1;37m
 # Reset color
 RESET = \033[0m
 
-NAME = program
+NAME = Easyfind
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -I $(INC_DIR)
 
@@ -41,9 +41,8 @@ OBJ_DIR = obj
 SRC_DIR = src
 INC_DIR = inc
 
-SRCS = src/main.cpp \
-		src/ScalarConverter.cpp
-		
+SRCS = src/main.cpp 
+
 OBJS = $(SRCS:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
 
 all: $(NAME)

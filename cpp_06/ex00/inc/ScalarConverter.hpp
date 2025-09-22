@@ -6,7 +6,7 @@
 /*   By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 20:51:37 by daeunki2          #+#    #+#             */
-/*   Updated: 2025/09/15 17:06:13 by daeunki2         ###   ########.fr       */
+/*   Updated: 2025/09/21 17:28:48 by daeunki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ class ScalarConverter
 {
     private: 
         ScalarConverter();
-        ScalarConverter(const ScalarConverter &);
-        ScalarConverter &operator=(const ScalarConverter &);
+        ScalarConverter(const ScalarConverter &a);
+        ScalarConverter &operator=(const ScalarConverter &a);
         ~ScalarConverter();
 
         // identifier
