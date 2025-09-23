@@ -6,7 +6,7 @@
 #    By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/22 10:54:57 by daeunki2          #+#    #+#              #
-#    Updated: 2025/09/22 10:55:08 by daeunki2         ###   ########.fr        #
+#    Updated: 2025/09/23 21:43:13 by daeunki2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ BOLD_WHITE = \033[1;37m
 # Reset color
 RESET = \033[0m
 
-NAME = Easyfind
+NAME = Span
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -I $(INC_DIR)
 
@@ -41,7 +41,8 @@ OBJ_DIR = obj
 SRC_DIR = src
 INC_DIR = inc
 
-SRCS = src/main.cpp 
+SRCS = src/main.cpp \
+		src/Span.cpp 
 
 OBJS = $(SRCS:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
 
