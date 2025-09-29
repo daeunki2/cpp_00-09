@@ -6,7 +6,7 @@
 /*   By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/21 19:28:15 by daeunki2          #+#    #+#             */
-/*   Updated: 2025/09/21 19:28:31 by daeunki2         ###   ########.fr       */
+/*   Updated: 2025/09/29 15:50:39 by daeunki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ void swap(T& a, T& b)
 }
 
 template <typename T>
-T min(T a, T b) {
+T min(T a, T b) 
+{
     return (a < b) ? a : b;
 }
 

@@ -6,7 +6,7 @@
 /*   By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 20:51:46 by daeunki2          #+#    #+#             */
-/*   Updated: 2025/09/15 17:45:57 by daeunki2         ###   ########.fr       */
+/*   Updated: 2025/09/29 15:41:51 by daeunki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,13 @@ void ScalarConverter::convert(const std::string &literal)
                 fromError();
                 break;
             case TYPE_CHAR:
-                fromChar(trimmed[0]);
+            {
+                if(trimmed.length()==3)
+                    fromChar(trimmed[1]);
+                else
+                    fromChar(trimmed[0]);
                 break;
+            }
             case TYPE_INT:
                 fromInt(std::strtol(trimmed.c_str(), nullptr, 10));
                 break;
@@ -90,12 +95,12 @@ Type ScalarConverter::type_identifier(const std::string &str)
 }
 bool ScalarConverter::is_Char(const std::string &trimmed)
 {
-    // check the lenth. 
     if (trimmed.length() != 1)
+    {
+        if(trimmed.length() == 3 && trimmed[0] == '\''&&trimmed[2] == '\'')
+            return (true);
         return (false);
-    // 2. 숫자가 아닌 문자인지 확인
-    if (std::isdigit(trimmed[0]))
-        return false;
+    }
     return true;
 }
 
@@ -262,11 +267,9 @@ std::string ScalarConverter::trim(const std::string &str)
 {
     size_t i = 0;
 
-    // 공백 건너뛰기
     while (i < str.length() && std::isspace(str[i]))
         i++;
     
-    // 빈 문자열인 경우 예외 발생
     if (i == str.length())
         throw ScalarConverterException("Error: Empty string");
 
@@ -274,9 +277,10 @@ std::string ScalarConverter::trim(const std::string &str)
     while (j > 0 && std::isspace(str[j]))
         j--;
 
-    // 문자열 중간에 공백이 있는지 확인
-    for (size_t k = i; k <= j; k++) {
-        if (std::isspace(str[k])) {
+    for (size_t k = i; k <= j; k++)
+    {
+        if (std::isspace(str[k]))
+        {
             throw ScalarConverterException("Error: Whitespace in the middle of string");
         }
     }
