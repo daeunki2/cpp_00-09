@@ -6,57 +6,60 @@
 /*   By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 21:42:03 by daeunki2          #+#    #+#             */
-/*   Updated: 2025/09/23 21:48:08 by daeunki2         ###   ########.fr       */
+/*   Updated: 2025/10/06 13:16:21 by daeunki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
 #include <vector>
-#include <cstdlib>      // rand(), srand()
-#include <ctime>        // time()
+#include <iostream>
+#include <exception>
 #include "Span.hpp"
 
 int main()
 {
     try {
-        // 기본 테스트
-        Span sp(5);
+        // Span 객체를 크기 5로 생성
+        Span sp(50);
+        
+        // addNumber() 사용하여 숫자 추가
+        sp.addNumber(10);
+        sp.addNumber(20);
+        sp.addNumber(30);
+        sp.addNumber(40);
+        sp.addNumber(50);
 
-        sp.addNumber(6);
-        sp.addNumber(3);
-        sp.addNumber(17);
-        sp.addNumber(9);
-        sp.addNumber(11);
-
-		sp.printAll();
-        std::cout << "Shortest span: " << sp.shortestSpan() << std::endl;
-        std::cout << "Longest span:  " << sp.longestSpan() << std::endl;
-
-        // 예외 테스트 (초과 추가)
-        try
-		{
-            sp.addNumber(42);
+        // Span에 숫자가 다 채워졌으므로 addNumber가 두 번 실패할 것
+        try {
+            sp.addNumber(60);  // 여기에선 예외 발생
         } catch (const Span::ErrorException& e) {
-            std::cerr << "[Expected Exception] " << e.what() << std::endl;
+            std::cerr << "Error: " << e.what() << std::endl;
         }
 
-        // 대량 테스트
-        Span bigSpan(10000);
-        srand(static_cast<unsigned int>(time(NULL)));  // 랜덤 시드
+        // 출력
+        std::cout << "All numbers in Span: ";
+        sp.printAll();
 
-        for (int i = 0; i < 100; ++i) {
-            bigSpan.addNumber(rand());  // 0 ~ RAND_MAX 범위
-        }
+        // shortestSpan과 longestSpan 테스트
+        std::cout << "Shortest Span: " << sp.shortestSpan() << std::endl;
+        std::cout << "Longest Span: " << sp.longestSpan() << std::endl;
 
-        std::cout << "Big span test:" << std::endl;
-		bigSpan.printAll();
-        std::cout << "  Shortest span: " << bigSpan.shortestSpan() << std::endl;
-        std::cout << "  Longest span:  " << bigSpan.longestSpan() << std::endl;
+        // addRange() 사용해서 숫자 범위 추가
+        std::vector<int> more_numbers;
+        more_numbers.push_back(60);
+        more_numbers.push_back(70);
+        more_numbers.push_back(80);
 
+        sp.addRange(more_numbers.begin(), more_numbers.end());  // 범위 추가
+
+        std::cout << "After adding range of numbers: ";
+        sp.printAll();
+
+        // 새로운 shortestSpan과 longestSpan 계산
+        std::cout << "New Shortest Span: " << sp.shortestSpan() << std::endl;
+        std::cout << "New Longest Span: " << sp.longestSpan() << std::endl;
     }
-	catch (const std::exception& e)
-	{
-        std::cerr << "[Unhandled Exception] " << e.what() << std::endl;
+    catch (const Span::ErrorException& e) {
+        std::cerr << "Error: " << e.what() << std::endl;
     }
 
     return 0;
