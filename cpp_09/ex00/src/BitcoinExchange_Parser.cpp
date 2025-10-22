@@ -1,38 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   BitcoinExchange_Parser.cpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/22 14:00:25 by daeunki2          #+#    #+#             */
-/*   Updated: 2025/10/22 14:42:59 by daeunki2         ###   ########.fr       */
+/*   Created: 2025/10/22 15:18:09 by daeunki2          #+#    #+#             */
+/*   Updated: 2025/10/22 15:44:11 by daeunki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
-/*
-map
-*/
 
-int main(int argc, char** argv)
+void parse_db(const std::string& filename, std::map<std::string, float>& container)
 {
-    if (argc != 2)
-    {
-        std::cerr << "Error: could not open file." << std::endl;
-        return 1;
-    }
+	std::string lne;
+}	line = getline()
 
-    try
-	{
-        BitcoinExchange btc("data.csv", argv[1]);
-    }
-    catch (const std::exception& e)
-	{
-        std::cerr << e.what() << std::endl;
-        return 1;
-    }
 
-    return 0;
+
+void parse_search(const std::string& filename, std::multimap<std::string, float>& container)
+{
+
+
+	
 }
-

@@ -1,38 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   PmergeMe.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/22 14:00:25 by daeunki2          #+#    #+#             */
-/*   Updated: 2025/10/22 14:42:59 by daeunki2         ###   ########.fr       */
+/*   Created: 2025/10/22 14:01:19 by daeunki2          #+#    #+#             */
+/*   Updated: 2025/10/22 14:01:20 by daeunki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "BitcoinExchange.hpp"
-/*
-map
-*/
-
-int main(int argc, char** argv)
-{
-    if (argc != 2)
-    {
-        std::cerr << "Error: could not open file." << std::endl;
-        return 1;
-    }
-
-    try
-	{
-        BitcoinExchange btc("data.csv", argv[1]);
-    }
-    catch (const std::exception& e)
-	{
-        std::cerr << e.what() << std::endl;
-        return 1;
-    }
-
-    return 0;
-}
 
