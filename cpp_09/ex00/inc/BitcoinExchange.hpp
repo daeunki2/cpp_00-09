@@ -6,7 +6,7 @@
 /*   By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 13:59:57 by daeunki2          #+#    #+#             */
-/*   Updated: 2025/10/22 15:39:12 by daeunki2         ###   ########.fr       */
+/*   Updated: 2025/11/08 14:36:10 by daeunki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,16 @@
 #include <iostream>
 #include <map>
 #include <string>
+#include <sstream>
 #include <stdexcept>
 #include <fstream>
+#include "Error.hpp"
+
+enum type
+{
+	DATABASE,
+	SEARCH,
+};
 
 class BitcoinExchange
 {
@@ -27,24 +35,30 @@ class BitcoinExchange
 	std::string db_file;
 	std::string search_file;
 
-	void parse_db(const std::string& filename, std::map<std::string, float>& container);
-	void parse_search(const std::string& filename, std::multimap<std::string, float>& container);
+	
+	std::string& trim(std::string& str);
+	bool is_good_date(const std::string& date);
+	bool is_valid(const std::string& line, type type);
+	bool is_good_value(const std::string& value);
+	void check_all_error(const std::string& value);
 
+
+	
+
+	void parse_db(const std::string& filename, std::map<std::string, float>& container);
 
 	public:
 	BitcoinExchange();
-	BitcoinExchange(const std::string& dbFile, const std::string& searchFile);
+	BitcoinExchange(const std::string& searchFile);
 	BitcoinExchange(const BitcoinExchange& src);
 	BitcoinExchange& operator=(const BitcoinExchange& src);
 	~BitcoinExchange();
 
-	void search_and_print() const;
+const std::map<std::string, float>& get_db_ref() const;
 
-	class Bitcoin_Error : public std::runtime_error
-	{
-		public:
-		explicit Bitcoin_Error(const std::string& message);
-	};
+
+
+	void search_and_print(const std::string& filename);
 };
 
 #endif

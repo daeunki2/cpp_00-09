@@ -6,32 +6,44 @@
 /*   By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 21:42:03 by daeunki2          #+#    #+#             */
-/*   Updated: 2025/10/07 14:50:25 by daeunki2         ###   ########.fr       */
+/*   Updated: 2025/11/08 15:45:47 by daeunki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "RPN.hpp"
-#include <iostream>
 
-// 프로그램 이름: RPN
+#include "RPN.hpp"
+#include "Error.hpp"
+#include <iostream>
+#include <cstdlib> // EXIT_FAILURE/EXIT_SUCCESS를 위해 추가
+
 int main(int argc, char *argv[])
 {
     if (argc != 2)
     {
-        std::cerr << "Error: Invalid number of arguments." << std::endl;
-        std::cerr << "Usage: ./RPN \"<RPN expression>\"" << std::endl;
+        try {
+            throw ::RPN_error("Usage: ./RPN 1_string_to_calcul", ::RPN_error::DEFAULT);
+        } catch (const ::RPN_error& e) {
+            e.print();
+        }
         return (EXIT_FAILURE);
     }
+    
     try
     {
         RPN calculator(argv[1]);
         calculator.calculate();
     }
-    catch (const std::exception& e)
+    catch (const ::RPN_error& e) // RPN_error를 명시적으로 잡습니다.
     {
-        std::cerr << "An unexpected error occurred: " << e.what() << std::endl;
+        e.print(); // RPN_error::print()를 사용하여 색깔 있는 에러 메시지 출력
         return (EXIT_FAILURE);
     }
+    catch (const std::exception& e) // 그 외의 예상치 못한 표준 예외 처리
+    {
+        std::cerr << RED << "[Error] Unexpected standard exception: " << e.what() << RESET << std::endl;
+        return (EXIT_FAILURE);
+    }
+    
     return (EXIT_SUCCESS);
 }
 

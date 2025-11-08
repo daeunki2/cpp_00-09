@@ -6,7 +6,7 @@
 #    By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/22 11:00:33 by daeunki2          #+#    #+#              #
-#    Updated: 2025/10/22 14:02:20 by daeunki2         ###   ########.fr        #
+#    Updated: 2025/11/08 15:52:10 by daeunki2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,8 @@ SRC_DIR = src
 INC_DIR = inc
 
 SRCS = src/main.cpp \
-		src/PmergeMe.cpp
+		src/PmergeMe.cpp \
+		src/Error.cpp
 
 OBJS = $(SRCS:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
 

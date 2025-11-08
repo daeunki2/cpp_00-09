@@ -6,11 +6,16 @@
 /*   By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 11:19:41 by daeunki2          #+#    #+#             */
-/*   Updated: 2025/10/07 14:57:02 by daeunki2         ###   ########.fr       */
+/*   Updated: 2025/11/08 15:45:25 by daeunki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RPN.hpp"
+
+/******************************************************************************/
+/*                        	Orthodox Canonical Form                           */
+/******************************************************************************/
+
 
 RPN::RPN()
 {
@@ -27,12 +32,13 @@ RPN::~RPN()
 {
     
 }
-RPN::RPN(RPN& other)
+RPN::RPN(const RPN& other)
+:input(other.input), operand_stack(other.operand_stack)
 {
-    input = other.input;
-    operand_stack = other.operand_stack;
+    
 }
-RPN& RPN::operator=(RPN& other)
+
+RPN& RPN::operator=(const RPN& other)
 {
     if (this != &other)
     {
@@ -42,35 +48,31 @@ RPN& RPN::operator=(RPN& other)
     return (*this);
 }
 
-//check and set stacks
 
-static bool is_valid_operand(const std::string& token)
-{
-    try
-    {
-        double num = std::stod(token);
-        return num < 10; 
-    }
-    catch (const std::invalid_argument&)
-    {
-        return false;
-    }
-    catch (const std::out_of_range&)
-    {
-        return true;
-    }
-}
+/******************************************************************************/
+/*                        	         Helper                                   */
+/******************************************************************************/
+
 
 static bool is_operator(const std::string& token)
 {
-    if (token == "+" || token == "-" || token == "/" || token == "*")
+    if (token.size() == 1 && (token == "+" || token == "-" || token == "/" || token == "*"))
         return true;
-    return false;
+        
+    if (token.size() == 1 && token[0] >= '0' && token[0] <= '9')
+        return false;
+        
+    if (token.size() > 1 && (token.find_first_not_of("0123456789") == std::string::npos))
+    {
+        throw ::RPN_error("Operand must be a single digit integer (0-9)", ::RPN_error::LOGIC);
+    }
+    throw ::RPN_error("Unrecognized token: " + token, ::RPN_error::PARSE);
 }
 
+/******************************************************************************/
+/*                        store and calcul                                   */
+/******************************************************************************/
 
-
-// calculate logic
 void RPN::calculate()
 {
     std::stringstream ss(this->input);
@@ -78,25 +80,20 @@ void RPN::calculate()
 
     double first = 0;
     double second = 0;
-    int 	count = 0;
+
     while (ss >> token)
     {
-        if (is_valid_operand(token)) 
-        {
-            operand_stack.push(std::stod(token));
-			count++;
-        }
-        else if (is_operator(token))
+        if (is_operator(token))
         {
             if (operand_stack.size() < 2)
             {
-                std::cerr << "Error: Not enough operands." << std::endl;
-                return;
-			}
+                throw ::RPN_error("Not enough operands for operator '" + token + "'", ::RPN_error::LOGIC);
+            }
             second = operand_stack.top();
             operand_stack.pop();
             first = operand_stack.top();
             operand_stack.pop();
+
             if (token == "+")
                 operand_stack.push(first + second);
             else if (token == "-")
@@ -105,27 +102,25 @@ void RPN::calculate()
                 operand_stack.push(first * second);
             else if (token == "/")
             {
-                if (second == 0) // 0으로 나누기 오류 처리
+                if (second == 0) 
                 {
-                    std::cerr << "Error: Division by zero." << std::endl;
-                    return;
+                    throw ::RPN_error("Cannot divide by zero", ::RPN_error::LOGIC);
                 }
                 operand_stack.push(first / second);
             }
         }
         else
         {
-            std::cerr << "Error: Unknown token or invalid operand format." << std::endl;
-            return;
+            operand_stack.push(static_cast<double>(token[0] - '0')); 
         }
     }
 
-    if (operand_stack.size() == 1 && count >= 2)
+    if (operand_stack.size() == 1)
     {
         std::cout << operand_stack.top() << std::endl;
     }
     else
     {
-        std::cerr << "Error: Invalid expression structure (missing operators or operands)." << std::endl;
+        throw ::RPN_error("Invalid expression structure (too many operands or missing operators)", ::RPN_error::LOGIC);
     }
 }

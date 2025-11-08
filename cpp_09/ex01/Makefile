@@ -6,7 +6,7 @@
 #    By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/22 10:54:57 by daeunki2          #+#    #+#              #
-#    Updated: 2025/10/07 14:50:49 by daeunki2         ###   ########.fr        #
+#    Updated: 2025/11/08 15:51:35 by daeunki2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,7 +42,8 @@ SRC_DIR = src
 INC_DIR = inc
 
 SRCS = src/main.cpp \
-		src/RPN.cpp 
+        src/RPN.cpp \
+        src/Error.cpp
 
 OBJS = $(SRCS:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
 
@@ -54,7 +55,13 @@ $(OBJ_DIR):
 $(NAME): $(OBJ_DIR) $(OBJS)
 	@echo "Building $(NAME) 🛠️"
 	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
-	@echo "Build Complete! ✅"
+	@echo "$(BOLD_GREEN)---------------------------------------------------------------------------------------------$(RESET)"
+	@echo "$(BOLD_GREEN)✅ Build Complete! $(NAME) executable created. $(RESET)"
+	@echo "$(CYAN)Usage: $(RESET)./$(NAME) \"<RPN expression>\""
+	@echo "$(CYAN)Valid Tokens: $(RESET)"
+	@echo "  $(BOLD_YELLOW)Operands (Numbers):$(RESET) Single-digit integers with out plus sign or plus sign $(BOLD_WHITE)0-9$(RESET)."
+	@echo "  $(BOLD_YELLOW)Operators:$(RESET) $(BOLD_WHITE)+ - * /$(RESET)"
+	@echo "$(BOLD_GREEN)--------------------------------------------------------------------------------------------$(RESET)"
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp | $(OBJ_DIR)
 	@$(CC) $(CFLAGS) -c $< -o $@
