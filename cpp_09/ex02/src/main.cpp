@@ -6,18 +6,73 @@
 /*   By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/22 11:01:12 by daeunki2          #+#    #+#             */
-/*   Updated: 2025/10/06 11:59:16 by daeunki2         ###   ########.fr       */
+/*   Updated: 2025/11/12 16:29:05 by daeunki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int main()
+#include "PmergeMe.hpp"
+#include "Error.hpp"
+#include <iostream>
+#include <ctime>
+
+int main(int argc, char **argv)
 {
-  Span sp = Span(5);
-  sp.addNumber(6);
-  sp.addNumber(3);
-  sp.addNumber(17);
-  sp.addNumber(9);
-  sp.addNumber(11);
-  std::cout << sp.shortestSpan() << std::endl;
-  std::cout << sp.longestSpan() << std::endl;
-return 0; }
+    if (argc < 2)
+    {
+        std::cerr << "Usage: ./PmergeMe [numbers...]" << std::endl;
+        return 1;
+    }
+
+    PmergeMe sorter;
+
+    try
+    {
+        sorter.parseInput(argc, argv);
+        sorter.sortAndDisplay();
+    }
+    catch (const PemergeMe_error &e)
+    {
+        e.print();
+        return 1;
+    }
+    catch (const std::exception &e)
+    {
+        std::cerr << "Unexpected error: " << e.what() << std::endl;
+        return 1;
+    }
+
+    return 0;
+}
+
+
+// #include "PmergeMe.hpp"
+// #include "Error.hpp"
+
+// int main(int argc, char **argv)
+// {
+//     if (argc < 2)
+//     {
+//         std::cerr << "Usage: ./PmergeMe [numbers...]" << std::endl;
+//         return 1;
+//     }
+
+//     PmergeMe sorter;
+
+//     try
+//     {
+//         sorter.parseInput(argc, argv);
+//         sorter.sortAndDisplay();
+//     }
+//     catch (const PemergeMe_error::PemergeMe_error &e)
+//     {
+//         std::cerr << "Error: " << e.what() << std::endl;
+//         return 1;
+//     }
+//     catch (const std::exception &e) // 일반 예외
+//     {
+//         std::cerr << "Unexpected error: " << e.what() << std::endl;
+//         return 1;
+//     }
+
+//     return 0;
+// }

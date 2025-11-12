@@ -6,7 +6,7 @@
 /*   By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 14:00:17 by daeunki2          #+#    #+#             */
-/*   Updated: 2025/11/08 14:54:05 by daeunki2         ###   ########.fr       */
+/*   Updated: 2025/11/12 12:09:00 by daeunki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ BitcoinExchange::BitcoinExchange(const BitcoinExchange& src)
 {
 	db = src.db;
 	db_file = src.db_file;
-	to_find = src.to_find;
 	search_file = src.search_file;
 }
 
@@ -42,7 +41,6 @@ BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange& src)
 	{
 		db = src.db;
 		db_file = src.db_file;
-		to_find = src.to_find;
 		search_file = src.search_file;
 	}
 	return *this;
@@ -127,8 +125,8 @@ bool BitcoinExchange::is_good_date(const std::string& date)
             return false;
     }
 
-    int month = std::atoi(date.substr(5, 2).c_str());
-    int day = std::atoi(date.substr(8, 2).c_str());
+    int month = atoi(date.substr(5, 2).c_str());
+    int day = atoi(date.substr(8, 2).c_str());
 
     if (month < 1 || month > 12)
         return false;
@@ -169,7 +167,7 @@ void BitcoinExchange::check_all_error(const std::string& value)
 	if (count != 1 && count != 0)
 		throw ::Bitcoin_Error(std::string("only 1 . can be used "),  ::Bitcoin_Error::PARSE);
 	
-	float value_float = std::strtof(value.c_str(), NULL);
+	float value_float = strtof(value.c_str(), NULL);
 	if (value_float >= 1000)
 		throw ::Bitcoin_Error(std::string("too large a number. "),  ::Bitcoin_Error::PARSE);
 	if (value_float < 0)
@@ -215,7 +213,7 @@ void BitcoinExchange::parse_db(const std::string& filename, std::map<std::string
         if (!is_good_value(value))
             throw ::Bitcoin_Error(std::string("Invalid value format in file: ") + filename, ::Bitcoin_Error::PARSE);
 
-        float value_float = std::strtof(value.c_str(), NULL);
+        float value_float = strtof(value.c_str(), NULL);
         container[date] = value_float;
     }
 }
@@ -261,7 +259,7 @@ void BitcoinExchange::search_and_print(const std::string& filename)
                 throw ::Bitcoin_Error("value is empty", ::Bitcoin_Error::PARSE);
             check_all_error(value); 
 
-            float value_float = std::strtof(value.c_str(), NULL);
+            float value_float = strtof(value.c_str(), NULL);
             if (value_float == 0.0 && value.c_str() != std::string("0"))
             	throw ::Bitcoin_Error("not a positive number.", ::Bitcoin_Error::PARSE);
 

@@ -6,7 +6,7 @@
 /*   By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 13:59:57 by daeunki2          #+#    #+#             */
-/*   Updated: 2025/11/08 14:36:10 by daeunki2         ###   ########.fr       */
+/*   Updated: 2025/11/12 12:58:47 by daeunki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include <sstream>
 #include <stdexcept>
 #include <fstream>
+#include <cstdlib>
 #include "Error.hpp"
 
 enum type
@@ -31,7 +32,6 @@ class BitcoinExchange
 {
 	private:
 	std::map<std::string, float> db;
-	std::multimap<std::string, float> to_find;
 	std::string db_file;
 	std::string search_file;
 

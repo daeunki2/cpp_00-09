@@ -6,15 +6,21 @@
 #    By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/22 11:00:33 by daeunki2          #+#    #+#              #
-#    Updated: 2025/11/08 15:52:10 by daeunki2         ###   ########.fr        #
+#    Updated: 2025/11/12 16:50:31 by daeunki2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-
+RED    = \033[0;31m
+GREEN  = \033[0;32m
+YELLOW = \033[1;33m
+BLUE   = \033[0;34m
+RESET  = \033[0m
 
 NAME = PmergeMe
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -I $(INC_DIR)
+
+test_number = 100
 
 OBJ_DIR = obj
 SRC_DIR = src
@@ -48,6 +54,10 @@ fclean: clean
 	@echo "Cleaning Executable 🧹"
 	@rm -f $(NAME)
 	@echo "fclean ✅"
+
+test_large: $(NAME)
+	@echo "$(GREEN)Running $(NAME) with$(RESET) $(RED)$(test_number)$(GREEN) random numbers..."
+	@./$(NAME) $(shell shuf -i 1-100000 -n $(test_number))
 
 re: fclean all
 
