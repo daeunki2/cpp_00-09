@@ -6,7 +6,7 @@
 /*   By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 14:02:02 by daeunki2          #+#    #+#             */
-/*   Updated: 2025/11/12 16:50:44 by daeunki2         ###   ########.fr       */
+/*   Updated: 2025/11/12 16:56:09 by daeunki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,49 +72,55 @@ bool PmergeMe::parseInput(int argc, char **argv)
 
 void PmergeMe::Insert_sort(std::vector<int> &v)
 {
-    int size = v.size();
-    int outer, inner, key;
+	int size = v.size();
+	int outer, inner, key;
 
-    for (outer = 1; outer < size; outer++)
-    {
-        key = v[outer];        // 현재 삽입할 값
-        inner = outer;
+	for (outer = 1; outer < size; outer++)
+	{
+		key = v[outer];
+		inner = outer;
 
-        while (inner > 0 && v[inner - 1] > key)
-        {
-            v[inner] = v[inner - 1];  // 한 칸 뒤로 이동
-            inner--;
-        }
-        v[inner] = key;  // key 삽입
-    }
+		while (inner > 0 && v[inner - 1] > key)
+		{
+			v[inner] = v[inner - 1];
+			inner--;
+		}
+		v[inner] = key;
+	}
 }
 
 void PmergeMe::Insert_sort(std::list<int> &l)
 {
-    if (l.size() <= 1) return;
+	if (l.size() <= 1) return;
 
-    std::list<int>::iterator it = l.begin();
-    ++it;
+	std::list<int>::iterator it = l.begin();
+	++it;
 
-    for (; it != l.end(); ++it)
-    {
-        int key = *it;
-        std::list<int>::iterator j = it;
-        --j;
+	for (; it != l.end(); ++it)
+	{
+		int key = *it;
+		std::list<int>::iterator j = it;
+		--j;
 
-        while (true)
-        {
-            if (*j <= key || j == l.begin()) break;
-            std::list<int>::iterator next = j;
-            ++next;
-            *next = *j;
-            if (j == l.begin()) { j = l.begin(); break; }
-            --j;
-        }
-        std::list<int>::iterator insert_pos = j;
-        if (*insert_pos > key) ++insert_pos;
-        *insert_pos = key;
-    }
+		while (true)
+		{
+			if (*j <= key || j == l.begin())
+				break;
+			std::list<int>::iterator next = j;
+			++next;
+			*next = *j;
+			if (j == l.begin())
+			{
+				j = l.begin();
+				break;
+			}
+			--j;
+		}
+		std::list<int>::iterator insert_pos = j;
+		if (*insert_pos > key)
+			++insert_pos;
+		*insert_pos = key;
+	}
 }
 
 
@@ -124,87 +130,85 @@ void PmergeMe::Insert_sort(std::list<int> &l)
 
 void PmergeMe::fordJohnsonSort(std::vector<int> &v)
 {
-    int size = v.size();
-    if (size <= THRESHOLD)
-    {
-        Insert_sort(v);
-        return;
-    }
+	int size = v.size();
+	if (size <= THRESHOLD)
+	{
+		Insert_sort(v);
+		return;
+	}
 
-    // 배열 반으로 나누기
-    int mid = size / 2;
-    std::vector<int> left(v.begin(), v.begin() + mid);
-    std::vector<int> right(v.begin() + mid, v.end());
+	int mid = size / 2;
+	std::vector<int> left(v.begin(), v.begin() + mid);
+	std::vector<int> right(v.begin() + mid, v.end());
 
-    // 재귀 호출
-    fordJohnsonSort(left);
-    fordJohnsonSort(right);
+	fordJohnsonSort(left);
+	fordJohnsonSort(right);
 
-    // 병합
-    std::vector<int> merged;
-    int i = 0, j = 0;
-    while (i < (int)left.size() && j < (int)right.size())
-    {
-        if (left[i] <= right[j])
-            merged.push_back(left[i++]);
-        else
-            merged.push_back(right[j++]);
-    }
-    while (i < (int)left.size()) merged.push_back(left[i++]);
-    while (j < (int)right.size()) merged.push_back(right[j++]);
+	std::vector<int> merged;
+	int i = 0, j = 0;
+	while (i < (int)left.size() && j < (int)right.size())
+	{
+		if (left[i] <= right[j])
+			merged.push_back(left[i++]);
+		else
+			merged.push_back(right[j++]);
+	}
+	while (i < (int)left.size())
+		merged.push_back(left[i++]);
+	while (j < (int)right.size())
+		merged.push_back(right[j++]);
 
-    // 원본 벡터에 복사
-    v = merged;
+	v = merged;
 }
 
 void PmergeMe::fordJohnsonSort(std::list<int> &l)
 {
-    if (l.size() <= THRESHOLD)
-    {
-        Insert_sort(l); 
-        return;
-    }
+	if (l.size() <= THRESHOLD)
+	{
+		Insert_sort(l);
+		return;
+	}
 
-    std::list<int>::iterator mid_it = l.begin();
-    int mid = l.size() / 2;
-    for (int i = 0; i < mid; ++i) ++mid_it;
+	std::list<int>::iterator mid_it = l.begin();
+	int mid = l.size() / 2;
+	for (int i = 0; i < mid; ++i)
+		++mid_it;
 
-    std::list<int> left(l.begin(), mid_it);
-    std::list<int> right(mid_it, l.end());
+	std::list<int> left(l.begin(), mid_it);
+	std::list<int> right(mid_it, l.end());
 
-    fordJohnsonSort(left);
-    fordJohnsonSort(right);
+	fordJohnsonSort(left);
+	fordJohnsonSort(right);
 
-    // 병합
-    std::list<int> merged;
-    std::list<int>::iterator it_left = left.begin();
-    std::list<int>::iterator it_right = right.begin();
+	std::list<int> merged;
+	std::list<int>::iterator it_left = left.begin();
+	std::list<int>::iterator it_right = right.begin();
 
-    while (it_left != left.end() && it_right != right.end())
-    {
-        if (*it_left <= *it_right)
-        {
-            merged.push_back(*it_left);
-            ++it_left;
-        }
-        else
-        {
-            merged.push_back(*it_right);
-            ++it_right;
-        }
-    }
-    while (it_left != left.end())
-    {
-        merged.push_back(*it_left);
-        ++it_left;
-    }
-    while (it_right != right.end())
-    {
-        merged.push_back(*it_right);
-        ++it_right;
-    }
+	while (it_left != left.end() && it_right != right.end())
+	{
+		if (*it_left <= *it_right)
+		{
+			merged.push_back(*it_left);
+			++it_left;
+		}
+		else
+		{
+			merged.push_back(*it_right);
+			++it_right;
+		}
+	}
+	while (it_left != left.end())
+	{
+		merged.push_back(*it_left);
+		++it_left;
+	}
+	while (it_right != right.end())
+	{
+		merged.push_back(*it_right);
+		++it_right;
+	}
 
-    l = merged; // 원본 리스트에 복사
+	l = merged;
 }
 
 
@@ -214,7 +218,7 @@ void PmergeMe::fordJohnsonSort(std::list<int> &l)
 
 void PmergeMe::printColored(const std::string &text, const std::string &colorCode)
 {
-    std::cout << colorCode << text << RESET2;
+	std::cout << colorCode << text << RESET2;
 }
 
 void PmergeMe::sortAndDisplay()
@@ -239,6 +243,8 @@ void PmergeMe::sortAndDisplay()
 	for (std::vector<int>::iterator it = _vec.begin(); it != _vec.end(); ++it)
 		std::cout << *it << " ";
 	std::cout << std::endl;
+
+
 std::stringstream ss;
 ss << vecTime;
 printColored("---------------------------------------------------\n", BOLD_WHITE);
@@ -249,4 +255,5 @@ ss.str(""); ss.clear();
 ss << listTime;
 printColored("Time with list: ", BOLD_CYAN);
 printColored(ss.str() + " ms\n", BOLD_CYAN);
+
 }
