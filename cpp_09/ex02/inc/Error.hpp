@@ -14,6 +14,7 @@
 #define CYAN           "\x1B[36m"
 #define LIGHTMAGENTA   "\x1B[95m"
 
+
 class PemergeMe_error : public std::runtime_error
 {
 public:
